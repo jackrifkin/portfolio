@@ -145,6 +145,7 @@ h1 {
 .section-body > div > img {
     align-self: center;
     width: 50%;
+    flex-shrink: 0;
 }
 
 #box0 > .section-body > p {
