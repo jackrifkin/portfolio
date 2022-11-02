@@ -296,18 +296,11 @@ li {
     height: 100%;
     padding-left: 5%;
     padding-right: 5%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-line-pack: center;
-        align-content: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
     margin-right: 5%;
-    -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
+}
+
+#list {
+    margin-right: 2%;
 }
 
 .li-text {
@@ -319,6 +312,17 @@ li {
     line-height: 100%;
     font-size: 2vh;
     overflow-wrap: break-word;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
 }
 
 .dot {
@@ -340,7 +344,7 @@ li {
 }
 
 .rectangle {
-    width: 77%; /**/
+    width: 75%; /**/
     position: absolute;
     border: 5px solid green;
     z-index: -10;
