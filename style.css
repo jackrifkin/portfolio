@@ -272,6 +272,7 @@ p {
 .label-container {
     width: 105%; /* 109 */
     margin-right: 5%;
+    margin-top: .75%;
 }
 
 ul {
@@ -292,37 +293,41 @@ ul {
 }
 
 li {
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
     list-style-type: none;
     height: 100%;
     padding-left: 5%;
     padding-right: 5%;
-    margin-right: 5.5%;
+    width: 2.5%;
+}
+
+.dot {
+    background-color: white;
+    border-radius: 50%;
+    border: 5px solid green;
+    padding-left: .7%;
+    padding-right: .7%;
+    height: 1.45vw;
 }
 
 #list {
-    margin-right: 2%;
+    margin-right: 7.5%;
+    margin-left: 3%;
+    justify-content: space-between;
 }
 
 .li-text {
     padding: 0;
     margin-right: 0;
+    margin-left: 1%;
     width: 10%;
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
     line-height: 100%;
     font-size: 2vh;
     overflow-wrap: normal;
-}
-
-.dot {
-    -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    background-color: white;
-    border-radius: 50%;
-    padding: 100%;
-    width: 5%;
-    border: 5px solid green;
 }
 
 .dot:hover {
@@ -334,9 +339,11 @@ li {
 }
 
 .rectangle {
-    width: 77%; /**/
+    width: 37.5vw; /**/
+    margin-left: 1%;
+    height: 1.25vw;
     position: absolute;
-    border: 5px solid green;
+    background-color: green;
     z-index: -10;
 }
 
