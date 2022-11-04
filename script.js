@@ -2,12 +2,13 @@ var currentBox = 0;
 const sections = ["About Me", "Project1", "Project2"];
 var listLength = document.getElementById("list").getElementsByClassName("dot").length;
 
-window.onload = function() {
+$(window).on("load", function() {
     scrollToBox(0);
-};
-window.onresize = function () {
+    $(".loader-wrapper").fadeOut("slow");
+});
+$(window).on("resize", function () {
     scrollToBox(currentBox);
-};
+});
 
 for (i = 0; i < listLength; i++) {
     addEventToDot(i);

@@ -347,4 +347,133 @@ li {
     z-index: -10;
 }
 
+.loader-wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
 
+.white-borders {
+    width: 100%;
+    height: 5%;
+    position: absolute;
+    top: 47.5%;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.white-border {
+    width: 37.5%;
+    height: 105%;
+    background-color: white;
+    z-index: 1000;
+}
+
+@keyframes train {
+    from {left: 0;}
+    to {left: 5%;}
+}
+
+.train-wrapper-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation: train .15s linear 0s infinite forwards;
+}
+
+.train-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.train {
+    width: 5%;
+    height: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hitch {
+    width: .25%;
+    height: 1%;
+    background-color: #333;
+    position: relative;
+    top: 1.5%;
+}
+
+.train-body {
+    width: 100%;
+    height: 80%;
+    background-color: rgb(237,223,180);
+}
+
+.roof {
+    width: 100%;
+    height: 20%;
+    background-color: #aaaaaa;
+    border-radius: 100% 100% 0 0;
+}
+
+.paint {
+    width: 100%;
+    height: 25%;
+    position: relative;
+    top: 75%;
+    background-color: rgb(0,128,0);
+}
+
+.doors {
+    width: 30%;
+    height: 90%;
+    position: relative;
+    top: -10%;
+    left: 35%;
+    background-color: #aaaaaa;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.door-window {
+    width: 35%;
+    height: 60%;
+    background-color: #333;
+    margin-top: 5%;
+}
+
+.windows {
+    width: 85%;
+    height: 75%;
+    position: relative;
+    top: -105%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 7.5%;
+    padding-right: 7.5%;
+}
+
+.window {
+    width: 25%;
+    border: 1px solid #aaaaaa;
+    border-radius: 25%;
+    height: 60%;
+    background-color: #333;
+}
