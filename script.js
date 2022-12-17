@@ -4,7 +4,7 @@ var listLength = document.getElementById("list").getElementsByClassName("dot").l
 
 $(window).on("load", function() {
     scrollToBox(0);
-    // $(".loader-wrapper").fadeOut("slow");
+    $(".loader-wrapper").fadeOut("slow");
 });
 $(window).on("resize", function () {
     scrollToBox(currentBox);
