@@ -38,5 +38,5 @@ function scrollToBox(index) {
         console.log
         document.getElementById("box" + index)
         .scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
-    }, 500);
+    }, 0);
 }
