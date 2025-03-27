@@ -49,12 +49,12 @@
             "count": 10500,
             "type": "VEC2",
             "max": [
-                0.625,
-                1.0
+                0.9794410467147827,
+                0.9755859375
             ],
             "min": [
-                0.0,
-                1.1920928955078126e-7
+                0.028268933296203615,
+                0.028753995895385743
             ]
         },
         {
@@ -64,11 +64,11 @@
             "count": 10500,
             "type": "VEC2",
             "max": [
-                1.9794410467147828,
+                0.9794410467147827,
                 0.9755859375
             ],
             "min": [
-                1.0282689332962037,
+                0.028268933296203615,
                 0.028753995895385743
             ]
         },
@@ -104,7 +104,7 @@
     "buffers": [
         {
             "byteLength": 546000,
-            "uri": "right_wall_and_platforms.bin"
+            "uri": "right_wall_and_platforms_flipped.bin"
         }
     ],
     "bufferViews": [
@@ -336,7 +336,7 @@
                 "InheritType": 1,
                 "RotationActive": true,
                 "ScalingMax": null,
-                "currentUVSet": "map1"
+                "currentUVSet": "old"
             }
         }
     ],

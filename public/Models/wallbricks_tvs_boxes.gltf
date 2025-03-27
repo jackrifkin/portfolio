@@ -49,11 +49,11 @@
             "count": 384,
             "type": "VEC2",
             "max": [
-                5.990695476531982,
+                0.9906954765319824,
                 0.9951171875
             ],
             "min": [
-                5.155471324920654,
+                0.1554713249206543,
                 0.9583899974822998
             ]
         },
@@ -111,11 +111,11 @@
             "count": 60,
             "type": "VEC2",
             "max": [
-                5.420187950134277,
+                0.42018795013427737,
                 0.8752138614654541
             ],
             "min": [
-                5.165510654449463,
+                0.1655106544494629,
                 0.09238523244857788
             ]
         },
@@ -173,11 +173,11 @@
             "count": 684,
             "type": "VEC2",
             "max": [
-                5.976390361785889,
+                0.9763903617858887,
                 0.9951033592224121
             ],
             "min": [
-                5.0048828125,
+                0.0048828125,
                 0.15579438209533692
             ]
         },
@@ -235,11 +235,11 @@
             "count": 1224,
             "type": "VEC2",
             "max": [
-                5.969599723815918,
+                0.969599723815918,
                 0.995093584060669
             ],
             "min": [
-                5.0048828125,
+                0.0048828125,
                 0.100699782371521
             ]
         },
@@ -260,7 +260,7 @@
             "bufferView": 16,
             "byteOffset": 0,
             "componentType": 5126,
-            "count": 2088,
+            "count": 2124,
             "type": "VEC3",
             "max": [
                 214.8862762451172,
@@ -277,7 +277,7 @@
             "bufferView": 17,
             "byteOffset": 0,
             "componentType": 5126,
-            "count": 2088,
+            "count": 2124,
             "type": "VEC3",
             "max": [
                 1.0,
@@ -294,14 +294,14 @@
             "bufferView": 18,
             "byteOffset": 0,
             "componentType": 5126,
-            "count": 2088,
+            "count": 2124,
             "type": "VEC2",
             "max": [
-                5.994565010070801,
+                0.9945650100708008,
                 0.9950956106185913
             ],
             "min": [
-                5.009902477264404,
+                0.009902477264404297,
                 0.0048828125
             ]
         },
@@ -309,72 +309,10 @@
             "bufferView": 19,
             "byteOffset": 0,
             "componentType": 5125,
-            "count": 2088,
+            "count": 2124,
             "type": "SCALAR",
             "max": [
-                2087
-            ],
-            "min": [
-                0
-            ]
-        },
-        {
-            "bufferView": 20,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 36,
-            "type": "VEC3",
-            "max": [
-                171.2362518310547,
-                68.85774993896485,
-                214.0792694091797
-            ],
-            "min": [
-                138.09996032714845,
-                56.85590362548828,
-                209.2246856689453
-            ]
-        },
-        {
-            "bufferView": 21,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 36,
-            "type": "VEC3",
-            "max": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "min": [
-                -1.0,
-                -1.0,
-                -1.0
-            ]
-        },
-        {
-            "bufferView": 22,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 36,
-            "type": "VEC2",
-            "max": [
-                5.97623872756958,
-                0.47266459465026858
-            ],
-            "min": [
-                5.90339469909668,
-                0.41412413120269778
-            ]
-        },
-        {
-            "bufferView": 23,
-            "byteOffset": 0,
-            "componentType": 5125,
-            "count": 36,
-            "type": "SCALAR",
-            "max": [
-                35
+                2123
             ],
             "min": [
                 0
@@ -487,49 +425,25 @@
         {
             "buffer": 0,
             "byteOffset": 84672,
-            "byteLength": 25056,
+            "byteLength": 25488,
             "target": 34962
         },
         {
             "buffer": 0,
-            "byteOffset": 109728,
-            "byteLength": 25056,
+            "byteOffset": 110160,
+            "byteLength": 25488,
             "target": 34962
         },
         {
             "buffer": 0,
-            "byteOffset": 134784,
-            "byteLength": 16704,
+            "byteOffset": 135648,
+            "byteLength": 16992,
             "target": 34962
         },
         {
             "buffer": 0,
-            "byteOffset": 151488,
-            "byteLength": 8352,
-            "target": 34963
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 159840,
-            "byteLength": 432,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 160272,
-            "byteLength": 432,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 160704,
-            "byteLength": 288,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 160992,
-            "byteLength": 144,
+            "byteOffset": 152640,
+            "byteLength": 8496,
             "target": 34963
         }
     ],
@@ -560,12 +474,6 @@
         },
         {
             "name": "walls_substance",
-            "pbrMetallicRoughness": {
-                "metallicFactor": 0.0
-            }
-        },
-        {
-            "name": "pasted__walls_substance",
             "pbrMetallicRoughness": {
                 "metallicFactor": 0.0
             }
@@ -638,19 +546,6 @@
                         "POSITION": 16,
                         "NORMAL": 17,
                         "TEXCOORD_0": 18
-                    }
-                },
-                {
-                    "extensions": {
-                        "FB_ngon_encoding": {}
-                    },
-                    "mode": 4,
-                    "material": 5,
-                    "indices": 23,
-                    "attributes": {
-                        "POSITION": 20,
-                        "NORMAL": 21,
-                        "TEXCOORD_0": 22
                     }
                 }
             ]

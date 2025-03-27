@@ -1,18 +1,36 @@
 import { Canvas } from "@react-three/fiber";
 import "./App.css";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF, useTexture } from "@react-three/drei";
 import { modelSources } from "./sources";
 import { ModelSource } from "./types";
+import { useEffect } from "react";
+import { MeshStandardMaterial } from "three";
 
 const Model = ({ model }: { model: ModelSource }) => {
-  const gltf = useGLTF(`/${model.name}.gltf`);
+  const { scene } = useGLTF(`/Models/${model.name}.gltf`);
+  const texture = useTexture(`/Textures/${model.texture}`);
+  texture.flipY = false;
 
-  console.log(`rendering: ${model.name}`);
-  return (
-    <>
-      <primitive object={gltf.scene} />
-    </>
-  );
+  useEffect(() => {
+    scene.traverse((child) => {
+      // @ts-expect-error: isMesh isn't recognized
+      if (child.isMesh) {
+        // @ts-expect-error: child.material isn't recognized
+        child.material = new MeshStandardMaterial({
+          map: texture,
+          // transparent: model.hasTransparency,
+          // alphaMap: model.hasTransparency ? texture : undefined,
+        });
+      }
+    });
+  }, [model.hasTransparency, model.name, scene, texture]);
+
+  return <primitive object={scene} />;
+  // return (
+  //   <mesh name={model.name} geometry={nodes.RootNode.geometry}>
+  //     <meshStandardMaterial />
+  //   </mesh>
+  // )
 };
 
 const Models = () => {
@@ -28,10 +46,15 @@ const Models = () => {
 const Scene = () => {
   return (
     <Canvas>
-      <ambientLight intensity={0.3} />
-      <directionalLight position={[10, 10, 10]} intensity={0.5} />
+      <ambientLight intensity={0.3} color={[1, 1, 1]} />
+      <directionalLight
+        position={[10, 10, 10]}
+        intensity={0.5}
+        color={[1.2, 1, 1]}
+      />
       <Models />
       <OrbitControls />
+      <color attach="background" args={["#000"]} />
     </Canvas>
   );
 };

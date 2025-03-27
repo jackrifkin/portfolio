@@ -12,59 +12,89 @@
             "bufferView": 0,
             "byteOffset": 0,
             "componentType": 5126,
-            "count": 1536,
+            "count": 10500,
             "type": "VEC3",
             "max": [
-                131.72857666015626,
-                116.36830139160156,
-                219.93344116210938
+                222.927490234375,
+                387.4873046875,
+                222.32569885253907
             ],
             "min": [
-                93.528564453125,
-                66.92756652832031,
-                214.15443420410157
+                -194.60035705566407,
+                1.518214225769043,
+                -218.6253204345703
             ]
         },
         {
             "bufferView": 1,
             "byteOffset": 0,
             "componentType": 5126,
-            "count": 1536,
+            "count": 10500,
             "type": "VEC3",
             "max": [
-                0.5985024571418762,
-                0.3941132724285126,
+                1.0,
+                1.0,
                 1.0
             ],
             "min": [
-                -0.296974778175354,
-                -0.7942425608634949,
-                0.10475540906190872
+                -1.0,
+                -1.0,
+                -1.0
             ]
         },
         {
             "bufferView": 2,
             "byteOffset": 0,
             "componentType": 5126,
-            "count": 1536,
+            "count": 10500,
             "type": "VEC2",
             "max": [
-                4.633630752563477,
-                -0.20063698291778565
+                0.9794410467147827,
+                0.9755859375
             ],
             "min": [
-                4.033592224121094,
-                -0.9771571159362793
+                0.028268933296203615,
+                0.028753995895385743
             ]
         },
         {
             "bufferView": 3,
             "byteOffset": 0,
+            "componentType": 5126,
+            "count": 10500,
+            "type": "VEC2",
+            "max": [
+                0.9794410467147827,
+                0.9755859375
+            ],
+            "min": [
+                0.028268933296203615,
+                0.028753995895385743
+            ]
+        },
+        {
+            "bufferView": 4,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 10500,
+            "type": "VEC2",
+            "max": [
+                1.0,
+                1.0
+            ],
+            "min": [
+                0.0,
+                0.0478900671005249
+            ]
+        },
+        {
+            "bufferView": 5,
+            "byteOffset": 0,
             "componentType": 5125,
-            "count": 1536,
+            "count": 10500,
             "type": "SCALAR",
             "max": [
-                1535
+                10499
             ],
             "min": [
                 0
@@ -73,39 +103,51 @@
     ],
     "buffers": [
         {
-            "byteLength": 55296,
-            "uri": "experience_flyer.bin"
+            "byteLength": 546000,
+            "uri": "right_wall_and_platforms.bin"
         }
     ],
     "bufferViews": [
         {
             "buffer": 0,
             "byteOffset": 0,
-            "byteLength": 18432,
+            "byteLength": 126000,
             "target": 34962
         },
         {
             "buffer": 0,
-            "byteOffset": 18432,
-            "byteLength": 18432,
+            "byteOffset": 126000,
+            "byteLength": 126000,
             "target": 34962
         },
         {
             "buffer": 0,
-            "byteOffset": 36864,
-            "byteLength": 12288,
+            "byteOffset": 252000,
+            "byteLength": 84000,
             "target": 34962
         },
         {
             "buffer": 0,
-            "byteOffset": 49152,
-            "byteLength": 6144,
+            "byteOffset": 336000,
+            "byteLength": 84000,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 420000,
+            "byteLength": 84000,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 504000,
+            "byteLength": 42000,
             "target": 34963
         }
     ],
     "materials": [
         {
-            "name": "posters_texture2",
+            "name": "walls_substance",
             "pbrMetallicRoughness": {
                 "metallicFactor": 0.0
             }
@@ -113,7 +155,7 @@
     ],
     "meshes": [
         {
-            "name": "experience_flyer",
+            "name": "right_wall_and_platforms",
             "primitives": [
                 {
                     "extensions": {
@@ -121,11 +163,13 @@
                     },
                     "mode": 4,
                     "material": 0,
-                    "indices": 3,
+                    "indices": 5,
                     "attributes": {
                         "POSITION": 0,
                         "NORMAL": 1,
-                        "TEXCOORD_0": 2
+                        "TEXCOORD_0": 2,
+                        "TEXCOORD_1": 3,
+                        "TEXCOORD_2": 4
                     }
                 }
             ]
@@ -139,7 +183,7 @@
             ]
         },
         {
-            "name": "experience_flyer_$AssimpFbx$_Translation",
+            "name": "right_wall_and_platforms_$AssimpFbx$_RotationPivot",
             "matrix": [
                 1.0,
                 0.0,
@@ -153,9 +197,9 @@
                 0.0,
                 1.0,
                 0.0,
-                1.800087809562683,
-                0.833604633808136,
-                0.0,
+                0.4646839499473572,
+                6.381324291229248,
+                0.06070174649357796,
                 1.0
             ],
             "children": [
@@ -163,7 +207,7 @@
             ]
         },
         {
-            "name": "experience_flyer_$AssimpFbx$_RotationPivot",
+            "name": "right_wall_and_platforms_$AssimpFbx$_RotationPivotInverse",
             "matrix": [
                 1.0,
                 0.0,
@@ -177,9 +221,9 @@
                 0.0,
                 1.0,
                 0.0,
-                3.694465398788452,
-                3.0078136920928957,
-                7.026064872741699,
+                -0.4646839499473572,
+                -6.381324291229248,
+                -0.06070174649357796,
                 1.0
             ],
             "children": [
@@ -187,7 +231,7 @@
             ]
         },
         {
-            "name": "experience_flyer_$AssimpFbx$_RotationPivotInverse",
+            "name": "right_wall_and_platforms_$AssimpFbx$_ScalingOffset",
             "matrix": [
                 1.0,
                 0.0,
@@ -201,9 +245,9 @@
                 0.0,
                 1.0,
                 0.0,
-                -3.694465398788452,
-                -3.0078136920928957,
-                -7.026064872741699,
+                -13.698883056640625,
+                -188.12142944335938,
+                -1.7894874811172486,
                 1.0
             ],
             "children": [
@@ -211,7 +255,7 @@
             ]
         },
         {
-            "name": "experience_flyer_$AssimpFbx$_ScalingOffset",
+            "name": "right_wall_and_platforms_$AssimpFbx$_ScalingPivot",
             "matrix": [
                 1.0,
                 0.0,
@@ -225,9 +269,9 @@
                 0.0,
                 1.0,
                 0.0,
-                -108.91283416748047,
-                -88.67034912109375,
-                -207.12838745117188,
+                14.163566589355469,
+                194.5027618408203,
+                1.850189208984375,
                 1.0
             ],
             "children": [
@@ -235,23 +279,23 @@
             ]
         },
         {
-            "name": "experience_flyer_$AssimpFbx$_ScalingPivot",
+            "name": "right_wall_and_platforms_$AssimpFbx$_Scaling",
             "matrix": [
-                1.0,
+                0.03280840069055557,
                 0.0,
                 0.0,
                 0.0,
                 0.0,
-                1.0,
+                0.03280840069055557,
                 0.0,
                 0.0,
                 0.0,
                 0.0,
-                1.0,
+                0.03280840069055557,
                 0.0,
-                112.6072998046875,
-                91.67816162109375,
-                214.1544647216797,
+                0.0,
+                0.0,
+                0.0,
                 1.0
             ],
             "children": [
@@ -259,23 +303,23 @@
             ]
         },
         {
-            "name": "experience_flyer_$AssimpFbx$_Scaling",
+            "name": "right_wall_and_platforms_$AssimpFbx$_ScalingPivotInverse",
             "matrix": [
-                0.03280840069055557,
+                1.0,
                 0.0,
                 0.0,
                 0.0,
                 0.0,
-                0.03280840069055557,
+                1.0,
                 0.0,
                 0.0,
                 0.0,
                 0.0,
-                0.03280840069055557,
+                1.0,
                 0.0,
-                0.0,
-                0.0,
-                0.0,
+                -14.163566589355469,
+                -194.5027618408203,
+                -1.850189208984375,
                 1.0
             ],
             "children": [
@@ -283,31 +327,7 @@
             ]
         },
         {
-            "name": "experience_flyer_$AssimpFbx$_ScalingPivotInverse",
-            "matrix": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                -112.6072998046875,
-                -91.67816162109375,
-                -214.1544647216797,
-                1.0
-            ],
-            "children": [
-                8
-            ]
-        },
-        {
-            "name": "experience_flyer",
+            "name": "right_wall_and_platforms",
             "mesh": 0,
             "extras": {
                 "UserProperties": "",
@@ -316,7 +336,7 @@
                 "InheritType": 1,
                 "RotationActive": true,
                 "ScalingMax": null,
-                "currentUVSet": "map1"
+                "currentUVSet": "old"
             }
         }
     ],

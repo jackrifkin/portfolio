@@ -1,5 +1,7 @@
 export type ModelSource = {
   name: string;
-  textureFilepath: string;
+  texture: string;
   isHoverable?: boolean;
+  hasTransparency?: boolean;
+  hasEmission?: boolean;
 };
