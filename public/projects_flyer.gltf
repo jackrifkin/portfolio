@@ -1,0 +1,331 @@
+{
+    "asset": {
+        "version": "2.0",
+        "generator": "Open Asset Import Library (assimp v5.2.cf7d3637)"
+    },
+    "extensionsUsed": [
+        "KHR_materials_volume",
+        "FB_ngon_encoding"
+    ],
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 576,
+            "type": "VEC3",
+            "max": [
+                131.68605041503907,
+                116.36830139160156,
+                218.1741180419922
+            ],
+            "min": [
+                93.35470581054688,
+                66.77303314208985,
+                214.15443420410157
+            ]
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 576,
+            "type": "VEC3",
+            "max": [
+                0.12200514227151871,
+                0.44355353713035586,
+                1.0
+            ],
+            "min": [
+                -0.3342452049255371,
+                -0.000002472069809300592,
+                0.8315891027450562
+            ]
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 576,
+            "type": "VEC2",
+            "max": [
+                5.616955757141113,
+                -0.20063698291778565
+            ],
+            "min": [
+                5.016917705535889,
+                -0.9771571159362793
+            ]
+        },
+        {
+            "bufferView": 3,
+            "byteOffset": 0,
+            "componentType": 5125,
+            "count": 576,
+            "type": "SCALAR",
+            "max": [
+                575
+            ],
+            "min": [
+                0
+            ]
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 20736,
+            "uri": "projects_flyer.bin"
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteOffset": 0,
+            "byteLength": 6912,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 6912,
+            "byteLength": 6912,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 13824,
+            "byteLength": 4608,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 18432,
+            "byteLength": 2304,
+            "target": 34963
+        }
+    ],
+    "materials": [
+        {
+            "name": "posters_texture2",
+            "pbrMetallicRoughness": {
+                "metallicFactor": 0.0
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "projects_flyer",
+            "primitives": [
+                {
+                    "extensions": {
+                        "FB_ngon_encoding": {}
+                    },
+                    "mode": 4,
+                    "material": 0,
+                    "indices": 3,
+                    "attributes": {
+                        "POSITION": 0,
+                        "NORMAL": 1,
+                        "TEXCOORD_0": 2
+                    }
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "name": "RootNode",
+            "children": [
+                1
+            ]
+        },
+        {
+            "name": "projects_flyer_$AssimpFbx$_Translation",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.4294118881225586,
+                1.8398029804229737,
+                0.0,
+                1.0
+            ],
+            "children": [
+                2
+            ]
+        },
+        {
+            "name": "projects_flyer_$AssimpFbx$_RotationPivot",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                3.694465398788452,
+                3.0078136920928957,
+                7.026064872741699,
+                1.0
+            ],
+            "children": [
+                3
+            ]
+        },
+        {
+            "name": "projects_flyer_$AssimpFbx$_RotationPivotInverse",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -3.694465398788452,
+                -3.0078136920928957,
+                -7.026064872741699,
+                1.0
+            ],
+            "children": [
+                4
+            ]
+        },
+        {
+            "name": "projects_flyer_$AssimpFbx$_ScalingOffset",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -108.91283416748047,
+                -88.67034912109375,
+                -207.12838745117188,
+                1.0
+            ],
+            "children": [
+                5
+            ]
+        },
+        {
+            "name": "projects_flyer_$AssimpFbx$_ScalingPivot",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                112.6072998046875,
+                91.67816162109375,
+                214.1544647216797,
+                1.0
+            ],
+            "children": [
+                6
+            ]
+        },
+        {
+            "name": "projects_flyer_$AssimpFbx$_Scaling",
+            "matrix": [
+                0.03280840069055557,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.03280840069055557,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.03280840069055557,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "children": [
+                7
+            ]
+        },
+        {
+            "name": "projects_flyer_$AssimpFbx$_ScalingPivotInverse",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -112.6072998046875,
+                -91.67816162109375,
+                -214.1544647216797,
+                1.0
+            ],
+            "children": [
+                8
+            ]
+        },
+        {
+            "name": "projects_flyer",
+            "mesh": 0,
+            "extras": {
+                "UserProperties": "",
+                "IsNull": false,
+                "DefaultAttributeIndex": 0,
+                "InheritType": 1,
+                "RotationActive": true,
+                "ScalingMax": null,
+                "currentUVSet": "map1"
+            }
+        }
+    ],
+    "scenes": [
+        {
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "scene": 0
+}

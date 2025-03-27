@@ -1,0 +1,331 @@
+{
+    "asset": {
+        "version": "2.0",
+        "generator": "Open Asset Import Library (assimp v5.2.cf7d3637)"
+    },
+    "extensionsUsed": [
+        "KHR_materials_volume",
+        "FB_ngon_encoding"
+    ],
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 1536,
+            "type": "VEC3",
+            "max": [
+                131.72857666015626,
+                116.36830139160156,
+                219.93344116210938
+            ],
+            "min": [
+                93.528564453125,
+                66.92756652832031,
+                214.15443420410157
+            ]
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 1536,
+            "type": "VEC3",
+            "max": [
+                0.5985024571418762,
+                0.3941132724285126,
+                1.0
+            ],
+            "min": [
+                -0.296974778175354,
+                -0.7942425608634949,
+                0.10475540906190872
+            ]
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 1536,
+            "type": "VEC2",
+            "max": [
+                4.633630752563477,
+                -0.20063698291778565
+            ],
+            "min": [
+                4.033592224121094,
+                -0.9771571159362793
+            ]
+        },
+        {
+            "bufferView": 3,
+            "byteOffset": 0,
+            "componentType": 5125,
+            "count": 1536,
+            "type": "SCALAR",
+            "max": [
+                1535
+            ],
+            "min": [
+                0
+            ]
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 55296,
+            "uri": "experience_flyer.bin"
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteOffset": 0,
+            "byteLength": 18432,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 18432,
+            "byteLength": 18432,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 36864,
+            "byteLength": 12288,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 49152,
+            "byteLength": 6144,
+            "target": 34963
+        }
+    ],
+    "materials": [
+        {
+            "name": "posters_texture2",
+            "pbrMetallicRoughness": {
+                "metallicFactor": 0.0
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "experience_flyer",
+            "primitives": [
+                {
+                    "extensions": {
+                        "FB_ngon_encoding": {}
+                    },
+                    "mode": 4,
+                    "material": 0,
+                    "indices": 3,
+                    "attributes": {
+                        "POSITION": 0,
+                        "NORMAL": 1,
+                        "TEXCOORD_0": 2
+                    }
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "name": "RootNode",
+            "children": [
+                1
+            ]
+        },
+        {
+            "name": "experience_flyer_$AssimpFbx$_Translation",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                1.800087809562683,
+                0.833604633808136,
+                0.0,
+                1.0
+            ],
+            "children": [
+                2
+            ]
+        },
+        {
+            "name": "experience_flyer_$AssimpFbx$_RotationPivot",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                3.694465398788452,
+                3.0078136920928957,
+                7.026064872741699,
+                1.0
+            ],
+            "children": [
+                3
+            ]
+        },
+        {
+            "name": "experience_flyer_$AssimpFbx$_RotationPivotInverse",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -3.694465398788452,
+                -3.0078136920928957,
+                -7.026064872741699,
+                1.0
+            ],
+            "children": [
+                4
+            ]
+        },
+        {
+            "name": "experience_flyer_$AssimpFbx$_ScalingOffset",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -108.91283416748047,
+                -88.67034912109375,
+                -207.12838745117188,
+                1.0
+            ],
+            "children": [
+                5
+            ]
+        },
+        {
+            "name": "experience_flyer_$AssimpFbx$_ScalingPivot",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                112.6072998046875,
+                91.67816162109375,
+                214.1544647216797,
+                1.0
+            ],
+            "children": [
+                6
+            ]
+        },
+        {
+            "name": "experience_flyer_$AssimpFbx$_Scaling",
+            "matrix": [
+                0.03280840069055557,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.03280840069055557,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.03280840069055557,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "children": [
+                7
+            ]
+        },
+        {
+            "name": "experience_flyer_$AssimpFbx$_ScalingPivotInverse",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -112.6072998046875,
+                -91.67816162109375,
+                -214.1544647216797,
+                1.0
+            ],
+            "children": [
+                8
+            ]
+        },
+        {
+            "name": "experience_flyer",
+            "mesh": 0,
+            "extras": {
+                "UserProperties": "",
+                "IsNull": false,
+                "DefaultAttributeIndex": 0,
+                "InheritType": 1,
+                "RotationActive": true,
+                "ScalingMax": null,
+                "currentUVSet": "map1"
+            }
+        }
+    ],
+    "scenes": [
+        {
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "scene": 0
+}

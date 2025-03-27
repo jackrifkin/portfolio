@@ -1,0 +1,517 @@
+{
+    "asset": {
+        "version": "2.0",
+        "generator": "Open Asset Import Library (assimp v5.2.cf7d3637)"
+    },
+    "extensionsUsed": [
+        "KHR_materials_volume",
+        "FB_ngon_encoding"
+    ],
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 372,
+            "type": "VEC3",
+            "max": [
+                197.65985107421876,
+                10.803377151489258,
+                305.12359619140627
+            ],
+            "min": [
+                65.20150756835938,
+                1.600389838218689,
+                245.12261962890626
+            ]
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 372,
+            "type": "VEC3",
+            "max": [
+                0.8342053890228272,
+                0.8809294104576111,
+                0.7567271590232849
+            ],
+            "min": [
+                -0.8342087864875794,
+                -0.8809149265289307,
+                -0.7567230463027954
+            ]
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 372,
+            "type": "VEC2",
+            "max": [
+                0.9712894558906555,
+                -0.737433671951294
+            ],
+            "min": [
+                0.1254076212644577,
+                -0.9948676824569702
+            ]
+        },
+        {
+            "bufferView": 3,
+            "byteOffset": 0,
+            "componentType": 5125,
+            "count": 372,
+            "type": "SCALAR",
+            "max": [
+                371
+            ],
+            "min": [
+                0
+            ]
+        },
+        {
+            "bufferView": 4,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 12,
+            "type": "VEC3",
+            "max": [
+                192.7073974609375,
+                9.52824592590332,
+                299.69451904296877
+            ],
+            "min": [
+                70.57196044921875,
+                5.225679874420166,
+                247.9594268798828
+            ]
+        },
+        {
+            "bufferView": 5,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 12,
+            "type": "VEC3",
+            "max": [
+                0.4386008381843567,
+                0.8148981928825378,
+                -0.3789101541042328
+            ],
+            "min": [
+                -0.31962597370147707,
+                0.8148966431617737,
+                -0.4835105240345001
+            ]
+        },
+        {
+            "bufferView": 6,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 12,
+            "type": "VEC2",
+            "max": [
+                0.9226880669593811,
+                -0.8223097324371338
+            ],
+            "min": [
+                0.14976660907268525,
+                -0.8974690437316895
+            ]
+        },
+        {
+            "bufferView": 7,
+            "byteOffset": 0,
+            "componentType": 5125,
+            "count": 12,
+            "type": "SCALAR",
+            "max": [
+                11
+            ],
+            "min": [
+                0
+            ]
+        },
+        {
+            "bufferView": 8,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 11040,
+            "type": "VEC3",
+            "max": [
+                9.835006713867188,
+                224.28549194335938,
+                23.604206085205079
+            ],
+            "min": [
+                -193.0987548828125,
+                12.364013671875,
+                -193.90444946289063
+            ]
+        },
+        {
+            "bufferView": 9,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 11040,
+            "type": "VEC3",
+            "max": [
+                0.9999497532844544,
+                1.0,
+                0.9999995827674866
+            ],
+            "min": [
+                -0.9846816658973694,
+                -1.0,
+                -0.9849953055381775
+            ]
+        },
+        {
+            "bufferView": 10,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 11040,
+            "type": "VEC2",
+            "max": [
+                0.9750691652297974,
+                -0.02375650405883789
+            ],
+            "min": [
+                0.0244140625,
+                -0.9749283790588379
+            ]
+        },
+        {
+            "bufferView": 11,
+            "byteOffset": 0,
+            "componentType": 5125,
+            "count": 11040,
+            "type": "SCALAR",
+            "max": [
+                11039
+            ],
+            "min": [
+                0
+            ]
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 411264,
+            "uri": "cat_speakers_floodlights.bin"
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteOffset": 0,
+            "byteLength": 4464,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 4464,
+            "byteLength": 4464,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 8928,
+            "byteLength": 2976,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 11904,
+            "byteLength": 1488,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 13392,
+            "byteLength": 144,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 13536,
+            "byteLength": 144,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 13680,
+            "byteLength": 96,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 13776,
+            "byteLength": 48,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 13824,
+            "byteLength": 132480,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 146304,
+            "byteLength": 132480,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 278784,
+            "byteLength": 88320,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 367104,
+            "byteLength": 44160,
+            "target": 34963
+        }
+    ],
+    "materials": [
+        {
+            "name": "tvs_substance",
+            "pbrMetallicRoughness": {
+                "metallicFactor": 0.0
+            }
+        },
+        {
+            "name": "flood_light_substance",
+            "pbrMetallicRoughness": {
+                "metallicFactor": 0.0
+            }
+        },
+        {
+            "name": "speakers_and_cat",
+            "pbrMetallicRoughness": {
+                "metallicFactor": 0.0
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "cat_speakers_flood_lights",
+            "primitives": [
+                {
+                    "extensions": {
+                        "FB_ngon_encoding": {}
+                    },
+                    "mode": 4,
+                    "material": 0,
+                    "indices": 3,
+                    "attributes": {
+                        "POSITION": 0,
+                        "NORMAL": 1,
+                        "TEXCOORD_0": 2
+                    }
+                },
+                {
+                    "extensions": {
+                        "FB_ngon_encoding": {}
+                    },
+                    "mode": 4,
+                    "material": 1,
+                    "indices": 7,
+                    "attributes": {
+                        "POSITION": 4,
+                        "NORMAL": 5,
+                        "TEXCOORD_0": 6
+                    }
+                },
+                {
+                    "extensions": {
+                        "FB_ngon_encoding": {}
+                    },
+                    "mode": 4,
+                    "material": 2,
+                    "indices": 11,
+                    "attributes": {
+                        "POSITION": 8,
+                        "NORMAL": 9,
+                        "TEXCOORD_0": 10
+                    }
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "name": "RootNode",
+            "children": [
+                1
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights_$AssimpFbx$_RotationPivot",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.07482091337442398,
+                3.713904619216919,
+                1.824460744857788,
+                1.0
+            ],
+            "children": [
+                2
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights_$AssimpFbx$_RotationPivotInverse",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -0.07482091337442398,
+                -3.713904619216919,
+                -1.824460744857788,
+                1.0
+            ],
+            "children": [
+                3
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights_$AssimpFbx$_ScalingOffset",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -2.2057206630706789,
+                -109.48590850830078,
+                -53.78510284423828,
+                1.0
+            ],
+            "children": [
+                4
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights_$AssimpFbx$_ScalingPivot",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                2.28054141998291,
+                113.19981384277344,
+                55.609561920166019,
+                1.0
+            ],
+            "children": [
+                5
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights_$AssimpFbx$_Scaling",
+            "matrix": [
+                0.03280840069055557,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.03280840069055557,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.03280840069055557,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "children": [
+                6
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights_$AssimpFbx$_ScalingPivotInverse",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -2.28054141998291,
+                -113.19981384277344,
+                -55.609561920166019,
+                1.0
+            ],
+            "children": [
+                7
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights",
+            "mesh": 0,
+            "extras": {
+                "UserProperties": "",
+                "IsNull": false,
+                "DefaultAttributeIndex": 0,
+                "InheritType": 1,
+                "RotationActive": true,
+                "ScalingMax": null,
+                "currentUVSet": "map1"
+            }
+        }
+    ],
+    "scenes": [
+        {
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "scene": 0
+}
