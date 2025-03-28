@@ -18,19 +18,14 @@ const Model = ({ model }: { model: ModelSource }) => {
         // @ts-expect-error: child.material isn't recognized
         child.material = new MeshStandardMaterial({
           map: texture,
-          // transparent: model.hasTransparency,
-          // alphaMap: model.hasTransparency ? texture : undefined,
+          // transparent: model.hasTransparency || false,
+          // alphaMap: model.hasTransparency ? texture : null,
         });
       }
     });
   }, [model.hasTransparency, model.name, scene, texture]);
 
   return <primitive object={scene} />;
-  // return (
-  //   <mesh name={model.name} geometry={nodes.RootNode.geometry}>
-  //     <meshStandardMaterial />
-  //   </mesh>
-  // )
 };
 
 const Models = () => {
