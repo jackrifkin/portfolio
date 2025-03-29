@@ -18,12 +18,11 @@ const Model = ({ model }: { model: ModelSource }) => {
         // @ts-expect-error: child.material isn't recognized
         child.material = new MeshStandardMaterial({
           map: texture,
-          // transparent: model.hasTransparency || false,
-          // alphaMap: model.hasTransparency ? texture : null,
+          transparent: model.hasTransparency,
         });
       }
     });
-  }, [model.hasTransparency, model.name, scene, texture]);
+  }, [model.hasTransparency, scene, texture]);
 
   return <primitive object={scene} />;
 };
@@ -41,11 +40,11 @@ const Models = () => {
 const Scene = () => {
   return (
     <Canvas>
-      <ambientLight intensity={0.3} color={[1, 1, 1]} />
+      <ambientLight intensity={0.3} color={[1, 1, 1.5]} />
       <directionalLight
-        position={[10, 10, 10]}
-        intensity={0.5}
-        color={[1.2, 1, 1]}
+        position={[-3, 10, 10]}
+        intensity={0.75}
+        color={[1, 1, 1]}
       />
       <Models />
       <OrbitControls />

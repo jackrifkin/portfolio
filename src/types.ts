@@ -3,5 +3,5 @@ export type ModelSource = {
   texture: string;
   isHoverable?: boolean;
   hasTransparency?: boolean;
-  hasEmission?: boolean;
+  hasBloom?: boolean;
 };
