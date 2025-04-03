@@ -4,4 +4,5 @@ export type ModelSource = {
   isHoverable?: boolean;
   hasTransparency?: boolean;
   hasBloom?: boolean;
+  emissiveMap?: string;
 };

@@ -17,17 +17,20 @@ export const modelSources: ModelSource[] = [
     name: "cat_speakers_flood_lights",
     texture: "cat_speakers_flood_lights_texture.png",
     hasBloom: true,
+    emissiveMap: "cat_speakers_flood_lights_emissiveMap.png",
   },
   {
     name: "floor_wires_metal_tape",
     texture: "floor_wires_metal_tape_texture.png",
     hasBloom: true,
+    emissiveMap: "floor_wires_metal_tape_emissiveMap.png",
   },
   {
     name: "wallbricks_tvs_boxes",
     texture: "wall_bricks_tvs_boxes_texture.png",
     hasTransparency: true,
     hasBloom: true,
+    emissiveMap: "wallbricks_tvs_boxes_emissiveMap.png",
   },
   {
     name: "sand_rubble",
