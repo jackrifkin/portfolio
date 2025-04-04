@@ -2,16 +2,16 @@ import { ModelSource } from "./types";
 
 export const modelSources: ModelSource[] = [
   {
-    name: "right_wall_and_platforms",
-    texture: "right_wall_and_platforms_texture.png",
+    name: "right_wall_and_platforms_2048",
+    texture: "right_wall_and_platforms_texture_2048.png",
   },
   {
-    name: "left_wall",
-    texture: "left_wall_texture.png",
+    name: "left_wall_2048",
+    texture: "left_wall_texture_2048.png",
   },
   {
     name: "ground",
-    texture: "ground_texture2.png",
+    texture: "ground_texture.png",
   },
   {
     name: "cat_speakers_flood_lights",
@@ -26,11 +26,9 @@ export const modelSources: ModelSource[] = [
     emissiveMap: "floor_wires_metal_tape_emissiveMap.png",
   },
   {
-    name: "wallbricks_tvs_boxes",
-    texture: "wall_bricks_tvs_boxes_texture.png",
+    name: "wallbricks_tvs_boxes_2048",
+    texture: "wall_bricks_tvs_boxes_texture_2048.png",
     hasTransparency: true,
-    hasBloom: true,
-    emissiveMap: "wallbricks_tvs_boxes_emissiveMap.png",
   },
   {
     name: "sand_rubble",
