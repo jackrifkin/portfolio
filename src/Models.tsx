@@ -1,12 +1,9 @@
-import { Canvas } from "@react-three/fiber";
 import "./App.css";
-import { OrbitControls, useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF, useTexture } from "@react-three/drei";
 import { modelSources } from "./sources";
 import { ModelSource } from "./types";
 import { useEffect } from "react";
 import { Color, MeshStandardMaterial } from "three";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import { KernelSize } from "postprocessing";
 
 const EmissiveModel = ({ model }: { model: ModelSource }) => {
   const { scene } = useGLTF(`/Models/${model.name}.gltf`);
@@ -56,37 +53,13 @@ const Model = ({ model }: { model: ModelSource }) => {
 };
 
 const Models = () => {
-  return (
-    <>
-      {modelSources.map((model, index) =>
-        model.hasBloom && model.emissiveMap ? (
-          <EmissiveModel model={model} key={index} />
-        ) : (
-          <Model model={model} key={index} />
-        )
-      )}
-    </>
+  return modelSources.map((model, index) =>
+    model.hasBloom && model.emissiveMap ? (
+      <EmissiveModel model={model} key={index} />
+    ) : (
+      <Model model={model} key={index} />
+    )
   );
 };
 
-const Scene = () => {
-  return (
-    <Canvas camera={{ position: [2, 10, 10] }}>
-      <ambientLight intensity={0.5} color={[1, 1, 1.5]} />
-      <Models />
-      {/* TODO: disable pan when camera controls are complete */}
-      <OrbitControls />
-      <color attach="background" args={["#000"]} />
-      <EffectComposer>
-        <Bloom
-          luminanceThreshold={0.5}
-          intensity={2}
-          kernelSize={KernelSize.VERY_LARGE}
-          luminanceSmoothing={0.5}
-        />
-      </EffectComposer>
-    </Canvas>
-  );
-};
-
-export default Scene;
+export default Models;
