@@ -30,7 +30,7 @@ function App() {
   const [clickedPlay, setClickedPlay] = useState<boolean>(false);
   const [shouldFadeOutLoader, setShouldFadeOutLoader] =
     useState<boolean>(false);
-  const [musicMuted, setMusicMuted] = useState<boolean>(true);
+  const musicMuted = true; // TODO: useState
   const backgroundMusic = new Audio("Earth_Heaven_-_Deep_X.mp3");
 
   const onPlayButton = () => {
