@@ -1,0 +1,22 @@
+.fullscreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loader {
+  transition-property: opacity;
+  transition-timing-function: linear;
+  opacity: 100%;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
