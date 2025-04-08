@@ -1,7 +1,7 @@
 import { useFBX, useGLTF, useTexture } from "@react-three/drei";
 import { modelSources } from "../sources";
 import { ModelSource } from "../types";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import {
   AnimationMixer,
   Color,
@@ -10,6 +10,7 @@ import {
   MeshStandardMaterial,
 } from "three";
 import { useFrame } from "@react-three/fiber";
+import { MutedContext } from "../Contexts/MutedContext";
 
 // Issues with gltf animations, using FBX for animated models
 const AnimatedEmissiveFBXModel = ({ model }: { model: ModelSource }) => {
@@ -17,6 +18,7 @@ const AnimatedEmissiveFBXModel = ({ model }: { model: ModelSource }) => {
   const scene = useFBX(`/Models/${model.name}.fbx`);
   const texture = useTexture(`/Textures/${model.texture}`);
   const emissiveMap = useTexture(`/Textures/${model.emissiveMap}`);
+  const isMuted = useContext(MutedContext);
 
   useEffect(() => {
     scene.traverse((child) => {
@@ -51,7 +53,9 @@ const AnimatedEmissiveFBXModel = ({ model }: { model: ModelSource }) => {
   ]);
 
   useFrame((_, delta) => {
-    mixer.current?.update(delta);
+    if (!isMuted) {
+      mixer.current?.update(delta);
+    }
   });
 
   return <primitive object={scene} />;

@@ -1,3 +1,8 @@
+body {
+  background-color: #000;
+  color: white;
+}
+
 .fullscreen {
   position: absolute;
   top: 0;
@@ -16,7 +21,27 @@
   opacity: 100%;
 }
 
-body {
-  background-color: #212529;
+.ui-container {
+  width: 100vw;
+  height: 10vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 3vh;
+}
+
+.play-button {
+  background-color: transparent;
+  border: none;
   color: white;
+  cursor: pointer;
+  font-size: 2em;
+}
+
+.play-button:hover {
+  color: #ee2cf5;
 }

@@ -1,10 +1,12 @@
 import "./App.css";
 import { OrbitControls } from "@react-three/drei";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import SceneModels from "./Components/SceneModels";
 import { Canvas } from "@react-three/fiber";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { KernelSize } from "postprocessing";
+import MuteButton from "./Components/MuteButton";
+import { MutedContext } from "./Contexts/MutedContext";
 
 const LOADER_FADE_DURATION = 500; // in ms
 
@@ -30,8 +32,8 @@ function App() {
   const [clickedPlay, setClickedPlay] = useState<boolean>(false);
   const [shouldFadeOutLoader, setShouldFadeOutLoader] =
     useState<boolean>(false);
-  const musicMuted = true; // TODO: useState
-  const backgroundMusic = new Audio("Earth_Heaven_-_Deep_X.mp3");
+  const [musicMuted, setMusicMuted] = useState<boolean>(true);
+  const backgroundMusic = useMemo(() => new Audio("background_music.mp3"), []);
 
   const onPlayButton = () => {
     setClickedPlay(true);
@@ -41,8 +43,16 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    if (musicMuted) {
+      backgroundMusic.pause();
+    } else {
+      backgroundMusic.play();
+    }
+  }, [backgroundMusic, musicMuted]);
+
   return (
-    <>
+    <MutedContext.Provider value={musicMuted}>
       <Canvas
         style={{ visibility: clickedPlay ? "visible" : "hidden" }}
         className="canvas"
@@ -103,10 +113,22 @@ function App() {
             NOTE: This site is a work in progress and not yet fully functional
             :)
           </h1>
-          <button onClick={onPlayButton}>play</button>
+          <button className="play-button" onClick={onPlayButton}>
+            Start
+          </button>
         </div>
       )}
-    </>
+
+      {/* In-scene UI */}
+      {loaded && clickedPlay && (
+        <div className="ui-container">
+          <MuteButton
+            muted={musicMuted}
+            toggleMuted={() => setMusicMuted(!musicMuted)}
+          />
+        </div>
+      )}
+    </MutedContext.Provider>
   );
 }
 
