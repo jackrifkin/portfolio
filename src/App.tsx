@@ -33,15 +33,11 @@ function App() {
   const [shouldFadeOutLoader, setShouldFadeOutLoader] =
     useState<boolean>(false);
   const [musicMuted, setMusicMuted] = useState<boolean>(true);
-  const backgroundMusic = useMemo(() => new Audio("background_music.mp3"), []);
-
-  const onPlayButton = () => {
-    setClickedPlay(true);
-    if (!musicMuted) {
-      backgroundMusic.loop = true;
-      backgroundMusic.play();
-    }
-  };
+  const backgroundMusic = useMemo(() => {
+    const music = new Audio("background_music.mp3");
+    music.loop = true;
+    return music;
+  }, []);
 
   useEffect(() => {
     if (musicMuted) {
@@ -113,7 +109,12 @@ function App() {
             NOTE: This site is a work in progress and not yet fully functional
             :)
           </h1>
-          <button className="play-button" onClick={onPlayButton}>
+          <MuteButton
+            muted={musicMuted}
+            toggleMuted={() => setMusicMuted(!musicMuted)}
+            height={"75vh"}
+          />
+          <button className="play-button" onClick={() => setClickedPlay(true)}>
             Start
           </button>
         </div>
@@ -125,6 +126,7 @@ function App() {
           <MuteButton
             muted={musicMuted}
             toggleMuted={() => setMusicMuted(!musicMuted)}
+            height={"50%"}
           />
         </div>
       )}

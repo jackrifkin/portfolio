@@ -1,13 +1,15 @@
 const MuteButton = ({
   muted,
   toggleMuted,
+  height,
 }: {
   muted: boolean;
   toggleMuted: () => void;
+  height: string | number;
 }) => {
   return (
     <img
-      height={"50%"}
+      height={height}
       onClick={toggleMuted}
       alt={muted ? "muted" : "unmuted"}
       src={muted ? "muted.png" : "unmuted.png"}
