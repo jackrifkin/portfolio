@@ -1,0 +1,333 @@
+{
+    "asset": {
+        "version": "2.0",
+        "generator": "Open Asset Import Library (assimp v5.2.cf7d3637)"
+    },
+    "extensionsUsed": [
+        "KHR_materials_volume",
+        "FB_ngon_encoding"
+    ],
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 528,
+            "type": "VEC3",
+            "max": [
+                -82.00968170166016,
+                224.28549194335938,
+                -86.74197387695313
+            ],
+            "min": [
+                -112.37322235107422,
+                200.4630126953125,
+                -115.10736846923828
+            ]
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 528,
+            "type": "VEC3",
+            "max": [
+                0.9852160811424255,
+                0.9876792430877686,
+                0.9981962442398071
+            ],
+            "min": [
+                -0.9781576991081238,
+                -0.9999702572822571,
+                -0.9676021933555603
+            ]
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 528,
+            "type": "VEC2",
+            "max": [
+                0.8002744913101196,
+                0.7091861963272095
+            ],
+            "min": [
+                0.32333672046661379,
+                0.09526848793029785
+            ]
+        },
+        {
+            "bufferView": 3,
+            "byteOffset": 0,
+            "componentType": 5125,
+            "count": 528,
+            "type": "SCALAR",
+            "max": [
+                527
+            ],
+            "min": [
+                0
+            ]
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 19008,
+            "uri": "cat.bin"
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteOffset": 0,
+            "byteLength": 6336,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 6336,
+            "byteLength": 6336,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 12672,
+            "byteLength": 4224,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 16896,
+            "byteLength": 2112,
+            "target": 34963
+        }
+    ],
+    "materials": [
+        {
+            "name": "speakers_and_cat",
+            "pbrMetallicRoughness": {
+                "metallicFactor": 0.0
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "polySurface38",
+            "primitives": [
+                {
+                    "extensions": {
+                        "FB_ngon_encoding": {}
+                    },
+                    "mode": 4,
+                    "material": 0,
+                    "indices": 3,
+                    "attributes": {
+                        "POSITION": 0,
+                        "NORMAL": 1,
+                        "TEXCOORD_0": 2
+                    }
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "name": "RootNode",
+            "children": [
+                1
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights_$AssimpFbx$_RotationPivot",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.07482091337442398,
+                3.713904619216919,
+                1.824460744857788,
+                1.0
+            ],
+            "children": [
+                2
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights_$AssimpFbx$_RotationPivotInverse",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -0.07482091337442398,
+                -3.713904619216919,
+                -1.824460744857788,
+                1.0
+            ],
+            "children": [
+                3
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights_$AssimpFbx$_ScalingOffset",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -2.2057206630706789,
+                -109.48590850830078,
+                -53.78510284423828,
+                1.0
+            ],
+            "children": [
+                4
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights_$AssimpFbx$_ScalingPivot",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                2.28054141998291,
+                113.19981384277344,
+                55.609561920166019,
+                1.0
+            ],
+            "children": [
+                5
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights_$AssimpFbx$_Scaling",
+            "matrix": [
+                0.03280840069055557,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.03280840069055557,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.03280840069055557,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "children": [
+                6
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights_$AssimpFbx$_ScalingPivotInverse",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -2.28054141998291,
+                -113.19981384277344,
+                -55.609561920166019,
+                1.0
+            ],
+            "children": [
+                7
+            ]
+        },
+        {
+            "name": "cat_speakers_flood_lights",
+            "children": [
+                8,
+                9
+            ],
+            "extras": {
+                "UserProperties": "",
+                "IsNull": true,
+                "DefaultAttributeIndex": 0,
+                "InheritType": 1,
+                "RotationActive": true,
+                "ScalingMax": null
+            }
+        },
+        {
+            "name": "polySurface38",
+            "mesh": 0,
+            "extras": {
+                "UserProperties": "",
+                "IsNull": false,
+                "DefaultAttributeIndex": 0,
+                "InheritType": 1,
+                "RotationActive": true,
+                "ScalingMax": null,
+                "currentUVSet": "map1"
+            }
+        },
+        {
+            "name": "transform1",
+            "extras": {
+                "UserProperties": "",
+                "IsNull": true,
+                "DefaultAttributeIndex": 0,
+                "InheritType": 1,
+                "RotationActive": true,
+                "ScalingMax": null
+            }
+        }
+    ],
+    "scenes": [
+        {
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "scene": 0
+}

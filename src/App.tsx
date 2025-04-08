@@ -1,7 +1,7 @@
 import "./App.css";
 import { OrbitControls } from "@react-three/drei";
 import { Suspense, useEffect, useState } from "react";
-import Models from "./Components/Models";
+import SceneModels from "./Components/SceneModels";
 import { Canvas } from "@react-three/fiber";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { KernelSize } from "postprocessing";
@@ -57,8 +57,8 @@ function App() {
             />
           }
         >
-          <ambientLight intensity={0.5} color={[1, 1, 1.5]} />
-          <Models />
+          <ambientLight intensity={0.6} color={[1, 1, 1.5]} />
+          <SceneModels />
           <OrbitControls
             minDistance={11}
             maxDistance={40}

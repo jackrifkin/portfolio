@@ -5,4 +5,5 @@ export type ModelSource = {
   hasTransparency?: boolean;
   hasBloom?: boolean;
   emissiveMap?: string;
+  isAnimated?: boolean;
 };

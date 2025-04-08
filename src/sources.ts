@@ -18,6 +18,7 @@ export const modelSources: ModelSource[] = [
     texture: "cat_speakers_flood_lights_texture.png",
     hasBloom: true,
     emissiveMap: "cat_speakers_flood_lights_emissiveMap.png",
+    isAnimated: true,
   },
   {
     name: "floor_wires_metal_tape",
@@ -60,3 +61,8 @@ export const modelSources: ModelSource[] = [
     isHoverable: true,
   },
 ];
+
+export const loadingModelSource: ModelSource = {
+  name: "cat",
+  texture: "cat_speakers_flood_lights_texture.png",
+};
