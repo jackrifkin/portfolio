@@ -9,29 +9,6 @@ import MuteButton from "./Components/MuteButton";
 import { VolumeContext } from "./Contexts/VolumeContext";
 import VolumeSlider from "./Components/VolumeSlider";
 
-// const Loader = () => {
-//   const [numDots, setNumDots] = useState(0);
-//   const { progress } = useProgress();
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setNumDots((n) => (n === 3 ? 0 : n + 1));
-//     }, 500);
-
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   return (
-//     <Html>
-//       <div className="fullscreen-canvas loader">
-//         <h1>
-//           {Math.round(progress)} Loading{".".repeat(numDots)}
-//         </h1>
-//       </div>
-//     </Html>
-//   );
-// };
-
 function App() {
   const [playedMusic, setPlayedMusic] = useState<boolean>(false);
   const [clickedPlay, setClickedPlay] = useState<boolean>(false);
