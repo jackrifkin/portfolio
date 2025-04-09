@@ -43,7 +43,13 @@ function App() {
   const [prevVolume, setPrevVolume] = useState<number>(0.2);
   const [currentVolume, setCurrentVolume] = useState<number>(0);
   const [landingControlsVisible, setLandingControlsVisible] =
-    useState<boolean>(true);
+    useState<boolean>(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLandingControlsVisible(true);
+    }, 500);
+  }, []);
 
   useEffect(() => {
     backgroundMusic.volume = currentVolume;
@@ -114,7 +120,7 @@ function App() {
           </EffectComposer>
         </Suspense>
       </Canvas>
-      <Loader />
+      <Loader containerStyles={{ backgroundColor: "black" }} />
 
       {/* After loader, before models */}
       {landingControlsVisible && (
