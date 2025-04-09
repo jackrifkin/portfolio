@@ -1,5 +1,5 @@
 import "./App.css";
-import { Html, OrbitControls } from "@react-three/drei";
+import { Loader, OrbitControls } from "@react-three/drei";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import SceneModels from "./Components/SceneModels";
 import { Canvas } from "@react-three/fiber";
@@ -9,25 +9,28 @@ import MuteButton from "./Components/MuteButton";
 import { VolumeContext } from "./Contexts/VolumeContext";
 import VolumeSlider from "./Components/VolumeSlider";
 
-const Loader = () => {
-  const [numDots, setNumDots] = useState(0);
+// const Loader = () => {
+//   const [numDots, setNumDots] = useState(0);
+//   const { progress } = useProgress();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setNumDots((n) => (n === 3 ? 0 : n + 1));
-    }, 500);
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setNumDots((n) => (n === 3 ? 0 : n + 1));
+//     }, 500);
 
-    return () => clearInterval(interval);
-  }, []);
+//     return () => clearInterval(interval);
+//   }, []);
 
-  return (
-    <Html>
-      <div className="fullscreen loader">
-        <h1>Loading{".".repeat(numDots)}</h1>
-      </div>
-    </Html>
-  );
-};
+//   return (
+//     <Html>
+//       <div className="fullscreen-canvas loader">
+//         <h1>
+//           {Math.round(progress)} Loading{".".repeat(numDots)}
+//         </h1>
+//       </div>
+//     </Html>
+//   );
+// };
 
 function App() {
   const [playedMusic, setPlayedMusic] = useState<boolean>(false);
@@ -89,7 +92,7 @@ function App() {
         className="canvas"
         camera={{ position: [5, 3, 10] }}
       >
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={null}>
           <ambientLight intensity={0.6} color={[1, 1, 1.5]} />
           <SceneModels />
           <OrbitControls
@@ -111,6 +114,7 @@ function App() {
           </EffectComposer>
         </Suspense>
       </Canvas>
+      <Loader />
 
       {/* After loader, before models */}
       {landingControlsVisible && (
