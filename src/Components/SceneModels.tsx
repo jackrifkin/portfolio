@@ -10,7 +10,7 @@ import {
   MeshStandardMaterial,
 } from "three";
 import { useFrame } from "@react-three/fiber";
-import { MutedContext } from "../Contexts/MutedContext";
+import { VolumeContext } from "../Contexts/VolumeContext";
 
 // Issues with gltf animations, using FBX for animated models
 const AnimatedEmissiveFBXModel = ({ model }: { model: ModelSource }) => {
@@ -18,7 +18,7 @@ const AnimatedEmissiveFBXModel = ({ model }: { model: ModelSource }) => {
   const scene = useFBX(`/Models/${model.name}.fbx`);
   const texture = useTexture(`/Textures/${model.texture}`);
   const emissiveMap = useTexture(`/Textures/${model.emissiveMap}`);
-  const isMuted = useContext(MutedContext);
+  const volume = useContext(VolumeContext);
 
   useEffect(() => {
     scene.traverse((child) => {
@@ -53,7 +53,7 @@ const AnimatedEmissiveFBXModel = ({ model }: { model: ModelSource }) => {
   ]);
 
   useFrame((_, delta) => {
-    if (!isMuted) {
+    if (volume !== 0) {
       mixer.current?.update(delta);
     }
   });

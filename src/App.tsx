@@ -6,7 +6,8 @@ import { Canvas } from "@react-three/fiber";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { KernelSize } from "postprocessing";
 import MuteButton from "./Components/MuteButton";
-import { MutedContext } from "./Contexts/MutedContext";
+import { VolumeContext } from "./Contexts/VolumeContext";
+import VolumeSlider from "./Components/VolumeSlider";
 
 const LOADER_FADE_DURATION = 500; // in ms
 
@@ -29,26 +30,62 @@ const Loader = ({ onFinish, beforeFinish, finishDelay }: LoaderProps) => {
 
 function App() {
   const [loaded, setLoaded] = useState<boolean>(false);
+  const [playedMusic, setPlayedMusic] = useState<boolean>(false);
   const [clickedPlay, setClickedPlay] = useState<boolean>(false);
   const [shouldFadeOutLoader, setShouldFadeOutLoader] =
     useState<boolean>(false);
-  const [musicMuted, setMusicMuted] = useState<boolean>(true);
   const backgroundMusic = useMemo(() => {
     const music = new Audio("background_music.mp3");
     music.loop = true;
     return music;
   }, []);
+  const [prevVolume, setPrevVolume] = useState<number>(0.2);
+  const [currentVolume, setCurrentVolume] = useState<number>(0);
+  const [landingControlsVisible, setLandingControlsVisible] =
+    useState<boolean>(true);
 
   useEffect(() => {
-    if (musicMuted) {
-      backgroundMusic.pause();
-    } else {
+    backgroundMusic.volume = currentVolume;
+  }, [backgroundMusic, currentVolume]);
+
+  // starts music if not already started
+  const playMusic = () => {
+    if (!playedMusic) {
+      setPlayedMusic(true);
       backgroundMusic.play();
     }
-  }, [backgroundMusic, musicMuted]);
+  };
+
+  // mutes the volume
+  const toggleMute = () => {
+    playMusic();
+
+    if (currentVolume === 0 && prevVolume !== 0) {
+      setCurrentVolume(prevVolume);
+    } else if (currentVolume === 0) {
+      setCurrentVolume(prevVolume);
+    } else {
+      setPrevVolume(currentVolume);
+      setCurrentVolume(0);
+    }
+  };
+
+  // Sets the volume to the provided value
+  const setVolume = (val: number) => {
+    playMusic();
+
+    if (val === 0) {
+      setCurrentVolume(0);
+      setPrevVolume(0.2);
+    } else {
+      setCurrentVolume(val);
+      setPrevVolume(val);
+    }
+  };
 
   return (
-    <MutedContext.Provider value={musicMuted}>
+    <VolumeContext.Provider value={currentVolume}>
+      {/* Scene */}
       <Canvas
         style={{ visibility: clickedPlay ? "visible" : "hidden" }}
         className="canvas"
@@ -98,24 +135,30 @@ function App() {
               : undefined
           }
         >
-          <p>Loading...</p>
+          <h1>Loading...</h1>
         </div>
       )}
 
       {/* After loader, before models */}
-      {loaded && !clickedPlay && (
-        <div className="fullscreen landing">
-          <h1>
-            NOTE: This site is a work in progress and not yet fully functional
-            :)
-          </h1>
-          <MuteButton
-            muted={musicMuted}
-            toggleMuted={() => setMusicMuted(!musicMuted)}
-            height={"75vh"}
-          />
-          <button className="play-button" onClick={() => setClickedPlay(true)}>
-            Start
+      {loaded && landingControlsVisible && (
+        <div
+          className="fullscreen landing"
+          style={clickedPlay ? { opacity: "0%" } : undefined}
+        >
+          <div className="volume-controls">
+            <MuteButton toggleMuted={toggleMute} height={"50vh"} />
+            <VolumeSlider onChange={(n) => setVolume(n)} />
+          </div>
+          <button
+            className="play-button"
+            onClick={() => {
+              setClickedPlay(true);
+              setTimeout(() => {
+                setLandingControlsVisible(false);
+              }, 300);
+            }}
+          >
+            Play
           </button>
         </div>
       )}
@@ -123,14 +166,13 @@ function App() {
       {/* In-scene UI */}
       {loaded && clickedPlay && (
         <div className="ui-container">
-          <MuteButton
-            muted={musicMuted}
-            toggleMuted={() => setMusicMuted(!musicMuted)}
-            height={"50%"}
-          />
+          <div className="volume-controls">
+            <MuteButton toggleMuted={toggleMute} height={"35px"} />
+            <VolumeSlider onChange={(n) => setVolume(n)} />
+          </div>
         </div>
       )}
-    </MutedContext.Provider>
+    </VolumeContext.Provider>
   );
 }
 

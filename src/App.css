@@ -21,17 +21,23 @@ body {
   opacity: 100%;
 }
 
+.landing {
+  transition-property: opacity;
+  transition-timing-function: linear;
+  transition-duration: 300ms;
+  background-color: black;
+}
+
 .ui-container {
-  width: 100vw;
+  width: 95vw;
   height: 10vh;
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  flex-direction: column;
-  padding: 3vh;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
 }
 
 .play-button {
@@ -45,4 +51,18 @@ body {
 
 .play-button:hover {
   color: #ee2cf5;
+}
+
+.volume-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.volume-controls > img {
+  margin-right: 24px;
+}
+
+.mute-button {
+  cursor: pointer;
 }
