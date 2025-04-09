@@ -25,7 +25,7 @@ const AnimatedEmissiveFBXModel = ({ model }: { model: ModelSource }) => {
       if (child instanceof Mesh) {
         child.material = new MeshStandardMaterial({
           map: texture,
-          transparent: model.hasTransparency,
+          transparent: model.hasTransparency ?? false,
           emissive: new Color(1, 1, 1),
           toneMapped: false,
           emissiveMap: emissiveMap,
@@ -74,7 +74,7 @@ const EmissiveModel = ({ model }: { model: ModelSource }) => {
       if (child instanceof Mesh) {
         child.material = new MeshStandardMaterial({
           map: texture,
-          transparent: model.hasTransparency,
+          transparent: model.hasTransparency ?? false,
           emissive: new Color(1, 1, 1),
           toneMapped: false,
           emissiveMap: emissiveMap,
@@ -117,7 +117,7 @@ const Model = ({ model }: { model: ModelSource }) => {
       if (child instanceof Mesh) {
         child.material = new MeshStandardMaterial({
           map: texture,
-          transparent: model.hasTransparency,
+          transparent: model.hasTransparency ?? false,
         });
       }
     });

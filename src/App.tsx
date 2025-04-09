@@ -1,5 +1,5 @@
 import "./App.css";
-import { OrbitControls } from "@react-three/drei";
+import { Html, OrbitControls } from "@react-three/drei";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import SceneModels from "./Components/SceneModels";
 import { Canvas } from "@react-three/fiber";
@@ -9,31 +9,29 @@ import MuteButton from "./Components/MuteButton";
 import { VolumeContext } from "./Contexts/VolumeContext";
 import VolumeSlider from "./Components/VolumeSlider";
 
-const LOADER_FADE_DURATION = 500; // in ms
+const Loader = () => {
+  const [numDots, setNumDots] = useState(0);
 
-type LoaderProps = {
-  onFinish: () => void;
-  beforeFinish: () => void;
-  finishDelay: number;
-};
-
-const Loader = ({ onFinish, beforeFinish, finishDelay }: LoaderProps) => {
   useEffect(() => {
-    beforeFinish();
-    setTimeout(() => {
-      onFinish();
-    }, finishDelay);
-  }, [beforeFinish, finishDelay, onFinish]);
+    const interval = setInterval(() => {
+      setNumDots((n) => (n === 3 ? 0 : n + 1));
+    }, 500);
 
-  return null;
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <Html>
+      <div className="fullscreen loader">
+        <h1>Loading{".".repeat(numDots)}</h1>
+      </div>
+    </Html>
+  );
 };
 
 function App() {
-  const [loaded, setLoaded] = useState<boolean>(false);
   const [playedMusic, setPlayedMusic] = useState<boolean>(false);
   const [clickedPlay, setClickedPlay] = useState<boolean>(false);
-  const [shouldFadeOutLoader, setShouldFadeOutLoader] =
-    useState<boolean>(false);
   const backgroundMusic = useMemo(() => {
     const music = new Audio("background_music.mp3");
     music.loop = true;
@@ -91,15 +89,7 @@ function App() {
         className="canvas"
         camera={{ position: [5, 3, 10] }}
       >
-        <Suspense
-          fallback={
-            <Loader
-              onFinish={() => setLoaded(true)}
-              beforeFinish={() => setShouldFadeOutLoader(true)}
-              finishDelay={LOADER_FADE_DURATION}
-            />
-          }
-        >
+        <Suspense fallback={<Loader />}>
           <ambientLight intensity={0.6} color={[1, 1, 1.5]} />
           <SceneModels />
           <OrbitControls
@@ -122,25 +112,8 @@ function App() {
         </Suspense>
       </Canvas>
 
-      {/* Loader */}
-      {!loaded && (
-        <div
-          className="fullscreen loader"
-          style={
-            shouldFadeOutLoader
-              ? {
-                  opacity: "0%",
-                  transitionDuration: `${LOADER_FADE_DURATION}ms`,
-                }
-              : undefined
-          }
-        >
-          <h1>Loading...</h1>
-        </div>
-      )}
-
       {/* After loader, before models */}
-      {loaded && landingControlsVisible && (
+      {landingControlsVisible && (
         <div
           className="fullscreen landing"
           style={clickedPlay ? { opacity: "0%" } : undefined}
@@ -164,7 +137,7 @@ function App() {
       )}
 
       {/* In-scene UI */}
-      {loaded && clickedPlay && (
+      {clickedPlay && (
         <div className="ui-container">
           <div className="volume-controls">
             <MuteButton toggleMuted={toggleMute} height={"35px"} />
