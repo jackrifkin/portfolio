@@ -1,5 +1,5 @@
 import "./App.css";
-import { Html, OrbitControls } from "@react-three/drei";
+import { Loader, OrbitControls } from "@react-three/drei";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import SceneModels from "./Components/SceneModels";
 import { Canvas } from "@react-three/fiber";
@@ -8,26 +8,6 @@ import { KernelSize } from "postprocessing";
 import MuteButton from "./Components/MuteButton";
 import { VolumeContext } from "./Contexts/VolumeContext";
 import VolumeSlider from "./Components/VolumeSlider";
-
-const Loader = () => {
-  const [numDots, setNumDots] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setNumDots((n) => (n === 3 ? 0 : n + 1));
-    }, 500);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <Html>
-      <div className="fullscreen loader">
-        <h1>Loading{".".repeat(numDots)}</h1>
-      </div>
-    </Html>
-  );
-};
 
 function App() {
   const [playedMusic, setPlayedMusic] = useState<boolean>(false);
@@ -40,7 +20,13 @@ function App() {
   const [prevVolume, setPrevVolume] = useState<number>(0.2);
   const [currentVolume, setCurrentVolume] = useState<number>(0);
   const [landingControlsVisible, setLandingControlsVisible] =
-    useState<boolean>(true);
+    useState<boolean>(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLandingControlsVisible(true);
+    }, 500);
+  }, []);
 
   useEffect(() => {
     backgroundMusic.volume = currentVolume;
@@ -89,7 +75,7 @@ function App() {
         className="canvas"
         camera={{ position: [5, 3, 10] }}
       >
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={null}>
           <ambientLight intensity={0.6} color={[1, 1, 1.5]} />
           <SceneModels />
           <OrbitControls
@@ -111,6 +97,7 @@ function App() {
           </EffectComposer>
         </Suspense>
       </Canvas>
+      <Loader containerStyles={{ backgroundColor: "black" }} />
 
       {/* After loader, before models */}
       {landingControlsVisible && (
