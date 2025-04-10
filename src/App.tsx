@@ -1,13 +1,15 @@
 import "./App.css";
 import { Loader, OrbitControls } from "@react-three/drei";
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import SceneModels from "./Components/SceneModels";
 import { Canvas } from "@react-three/fiber";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { Bloom, EffectComposer, Outline } from "@react-three/postprocessing";
 import { KernelSize } from "postprocessing";
 import MuteButton from "./Components/MuteButton";
 import { VolumeContext } from "./Contexts/VolumeContext";
 import VolumeSlider from "./Components/VolumeSlider";
+import { Object3D } from "three";
+import { isMobile } from "react-device-detect";
 
 function App() {
   const [playedMusic, setPlayedMusic] = useState<boolean>(false);
@@ -21,6 +23,7 @@ function App() {
   const [currentVolume, setCurrentVolume] = useState<number>(0);
   const [landingControlsVisible, setLandingControlsVisible] =
     useState<boolean>(false);
+  const hoveredMesh = useRef<Object3D>(undefined);
 
   useEffect(() => {
     setTimeout(() => {
@@ -31,6 +34,14 @@ function App() {
   useEffect(() => {
     backgroundMusic.volume = currentVolume;
   }, [backgroundMusic, currentVolume]);
+
+  // TODO: for debugging, remove
+  useEffect(() => {
+    console.log("hoveredMeshUseEffect");
+    if (hoveredMesh.current) {
+      console.log("hoveredmesh" + hoveredMesh.current.name);
+    }
+  }, [hoveredMesh]);
 
   // starts music if not already started
   const playMusic = () => {
@@ -44,13 +55,18 @@ function App() {
   const toggleMute = () => {
     playMusic();
 
-    if (currentVolume === 0 && prevVolume !== 0) {
-      setCurrentVolume(prevVolume);
-    } else if (currentVolume === 0) {
-      setCurrentVolume(prevVolume);
+    if (isMobile) {
+      // mobile protocols don't allow web apps to change audio volume
+      backgroundMusic.pause();
     } else {
-      setPrevVolume(currentVolume);
-      setCurrentVolume(0);
+      if (currentVolume === 0 && prevVolume !== 0) {
+        setCurrentVolume(prevVolume);
+      } else if (currentVolume === 0) {
+        setCurrentVolume(prevVolume);
+      } else {
+        setPrevVolume(currentVolume);
+        setCurrentVolume(0);
+      }
     }
   };
 
@@ -77,7 +93,7 @@ function App() {
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.6} color={[1, 1, 1.5]} />
-          <SceneModels />
+          <SceneModels hoverableMeshRef={hoveredMesh} />
           <OrbitControls
             minDistance={11}
             maxDistance={40}
@@ -94,6 +110,11 @@ function App() {
               luminanceSmoothing={0.5}
               mipmapBlur
             />
+            <Outline
+              selection={hoveredMesh?.current}
+              edgeStrength={5}
+              visibleEdgeColor={1}
+            />
           </EffectComposer>
         </Suspense>
       </Canvas>
@@ -107,7 +128,7 @@ function App() {
         >
           <div className="volume-controls">
             <MuteButton toggleMuted={toggleMute} height={"50vh"} />
-            <VolumeSlider onChange={(n) => setVolume(n)} />
+            {!isMobile && <VolumeSlider onChange={(n) => setVolume(n)} />}
           </div>
           <button
             className="play-button"
@@ -128,7 +149,7 @@ function App() {
         <div className="ui-container">
           <div className="volume-controls">
             <MuteButton toggleMuted={toggleMute} height={"35px"} />
-            <VolumeSlider onChange={(n) => setVolume(n)} />
+            {!isMobile && <VolumeSlider onChange={(n) => setVolume(n)} />}
           </div>
         </div>
       )}

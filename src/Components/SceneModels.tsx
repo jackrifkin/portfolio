@@ -1,13 +1,14 @@
 import { useFBX, useGLTF, useTexture } from "@react-three/drei";
 import { modelSources } from "../sources";
 import { ModelSource } from "../types";
-import { useContext, useEffect, useRef } from "react";
+import { RefObject, useContext, useEffect, useRef } from "react";
 import {
   AnimationMixer,
   Color,
   LoopRepeat,
   Mesh,
   MeshStandardMaterial,
+  Object3D,
 } from "three";
 import { useFrame } from "@react-three/fiber";
 import { VolumeContext } from "../Contexts/VolumeContext";
@@ -107,9 +108,16 @@ const EmissiveModel = ({ model }: { model: ModelSource }) => {
   return <primitive object={scene} />;
 };
 
-const Model = ({ model }: { model: ModelSource }) => {
-  const { scene } = useGLTF(`/Models/${model.name}.gltf`);
+const Model = ({
+  model,
+  hoverableMeshRef,
+}: {
+  model: ModelSource;
+  hoverableMeshRef: RefObject<Object3D | undefined>;
+}) => {
+  const { scene, nodes } = useGLTF(`/Models/${model.name}.gltf`);
   const texture = useTexture(`/Textures/${model.texture}`);
+  const geoRef = useRef<Object3D>(undefined);
   texture.flipY = false;
 
   useEffect(() => {
@@ -121,12 +129,37 @@ const Model = ({ model }: { model: ModelSource }) => {
         });
       }
     });
-  }, [model.hasTransparency, scene, texture]);
+  }, [model.hasTransparency, nodes, scene, texture]);
 
-  return <primitive object={scene} />;
+  const handlePointerOver = () => {
+    if (model.isHoverable && hoverableMeshRef) {
+      console.log(model.name);
+      hoverableMeshRef.current = geoRef.current;
+    }
+  };
+
+  const handlePointerLeave = () => {
+    if (model.isHoverable && hoverableMeshRef) {
+      console.log(`leaving ${model.name}`);
+      hoverableMeshRef.current = undefined;
+    }
+  };
+
+  return (
+    <primitive
+      ref={geoRef}
+      object={scene}
+      onPointerOver={handlePointerOver}
+      onPointerLeave={handlePointerLeave}
+    />
+  );
 };
 
-const SceneModels = () => {
+const SceneModels = ({
+  hoverableMeshRef,
+}: {
+  hoverableMeshRef: RefObject<Object3D | undefined>;
+}) => {
   return modelSources.map((model, index) =>
     model.hasBloom && model.emissiveMap ? (
       model.isAnimated ? (
@@ -135,7 +168,7 @@ const SceneModels = () => {
         <EmissiveModel model={model} key={index} />
       )
     ) : (
-      <Model model={model} key={index} />
+      <Model model={model} key={index} hoverableMeshRef={hoverableMeshRef} />
     )
   );
 };
