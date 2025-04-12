@@ -1,6 +1,6 @@
 import "./App.css";
 import { Loader, OrbitControls } from "@react-three/drei";
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import SceneModels from "./Components/SceneModels";
 import { Canvas } from "@react-three/fiber";
 import { Bloom, EffectComposer, Outline } from "@react-three/postprocessing";
@@ -11,20 +11,21 @@ import VolumeSlider from "./Components/VolumeSlider";
 import { Object3D } from "three";
 import { isMobile } from "react-device-detect";
 
+export const MAX_VOLUME = 0.4;
+
 function App() {
   const [playedMusic, setPlayedMusic] = useState<boolean>(false);
   const [clickedPlay, setClickedPlay] = useState<boolean>(false);
-  const backgroundMusic = useMemo(() => {
-    const music = new Audio("background_music.mp3");
-    music.loop = true;
-    return music;
-  }, []);
-  const [prevVolume, setPrevVolume] = useState<number>(0.2);
-  const [currentVolume, setCurrentVolume] = useState<number>(0);
+  const musicRef = useRef<HTMLAudioElement>(null);
+  const [prevVolume, setPrevVolume] = useState<number>(MAX_VOLUME / 2);
+  const [currentVolume, setCurrentVolume] = useState<number>(
+    isMobile ? MAX_VOLUME / 2 : 0
+  );
   const [landingControlsVisible, setLandingControlsVisible] =
     useState<boolean>(false);
   const hoveredMesh = useRef<Object3D>(undefined);
 
+  // give time for the loader to mount
   useEffect(() => {
     setTimeout(() => {
       setLandingControlsVisible(true);
@@ -32,8 +33,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    backgroundMusic.volume = currentVolume;
-  }, [backgroundMusic, currentVolume]);
+    if (musicRef.current) {
+      musicRef.current.volume = currentVolume;
+    }
+  }, [musicRef, currentVolume]);
 
   // TODO: for debugging, remove
   useEffect(() => {
@@ -45,9 +48,9 @@ function App() {
 
   // starts music if not already started
   const playMusic = () => {
-    if (!playedMusic) {
+    if (!playedMusic && musicRef.current) {
       setPlayedMusic(true);
-      backgroundMusic.play();
+      musicRef.current.play();
     }
   };
 
@@ -55,9 +58,17 @@ function App() {
   const toggleMute = () => {
     playMusic();
 
+    // mobile protocols don't allow web apps to change audio volume
     if (isMobile) {
-      // mobile protocols don't allow web apps to change audio volume
-      backgroundMusic.pause();
+      if (musicRef.current) {
+        if (musicRef.current.paused) {
+          console.log("play");
+          musicRef.current.play();
+        } else {
+          console.log("pause");
+          musicRef.current.pause();
+        }
+      }
     } else {
       if (currentVolume === 0 && prevVolume !== 0) {
         setCurrentVolume(prevVolume);
@@ -76,15 +87,20 @@ function App() {
 
     if (val === 0) {
       setCurrentVolume(0);
-      setPrevVolume(0.2);
+      setPrevVolume(MAX_VOLUME / 2);
     } else {
       setCurrentVolume(val);
       setPrevVolume(val);
     }
   };
 
+  const isMuted = () => {
+    return isMobile ? musicRef.current?.paused ?? true : currentVolume === 0;
+  };
+
   return (
     <VolumeContext.Provider value={currentVolume}>
+      <audio loop ref={musicRef} src="background_music.mp3" />
       {/* Scene */}
       <Canvas
         style={{ visibility: clickedPlay ? "visible" : "hidden" }}
@@ -127,8 +143,12 @@ function App() {
           style={clickedPlay ? { opacity: "0%" } : undefined}
         >
           <div className="volume-controls">
-            <MuteButton toggleMuted={toggleMute} height={"50vh"} />
-            {!isMobile && <VolumeSlider onChange={(n) => setVolume(n)} />}
+            <MuteButton
+              isMuted={isMuted()}
+              toggleMute={toggleMute}
+              height={"40px"}
+            />
+            {!isMobile && <VolumeSlider onChange={setVolume} />}
           </div>
           <button
             className="play-button"
@@ -148,8 +168,12 @@ function App() {
       {clickedPlay && (
         <div className="ui-container">
           <div className="volume-controls">
-            <MuteButton toggleMuted={toggleMute} height={"35px"} />
-            {!isMobile && <VolumeSlider onChange={(n) => setVolume(n)} />}
+            <MuteButton
+              isMuted={isMuted()}
+              toggleMute={toggleMute}
+              height={"32px"}
+            />
+            {!isMobile && <VolumeSlider onChange={setVolume} />}
           </div>
         </div>
       )}
