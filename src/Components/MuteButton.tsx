@@ -1,15 +1,19 @@
+type MuteButtonProps = {
+  toggleMute: () => void;
+  height: string | number;
+  isMuted: boolean;
+} & React.HTMLAttributes<HTMLImageElement>;
+
 const MuteButton = ({
   toggleMute: toggleMuted,
   height,
   isMuted,
-}: {
-  toggleMute: () => void;
-  height: string | number;
-  isMuted: boolean;
-}) => {
+  ...props
+}: MuteButtonProps) => {
   console.log(isMuted);
   return (
     <img
+      {...props}
       className="mute-button"
       height={height}
       onClick={toggleMuted}

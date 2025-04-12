@@ -10,18 +10,12 @@ import VolumeSlider from "./Components/VolumeSlider";
 import { Object3D } from "three";
 import { isMobile } from "react-device-detect";
 import { MutedContext } from "./Contexts/MutedContext";
-
-export const MAX_VOLUME = 0.4;
+import useBackgroundMusic from "./Hooks/useBackgroundMusic";
 
 function App() {
-  const [playedMusic, setPlayedMusic] = useState<boolean>(false);
+  const { currentVolume, isMuted, setVolume, toggleMute, musicRef } =
+    useBackgroundMusic();
   const [clickedPlay, setClickedPlay] = useState<boolean>(false);
-  const musicRef = useRef<HTMLAudioElement>(null);
-  const [prevVolume, setPrevVolume] = useState<number>(MAX_VOLUME / 2);
-  const [currentVolume, setCurrentVolume] = useState<number>(
-    isMobile ? MAX_VOLUME / 2 : 0
-  );
-  const [isMuted, setIsMuted] = useState<boolean>(true);
   const [landingControlsVisible, setLandingControlsVisible] =
     useState<boolean>(false);
   const hoveredMesh = useRef<Object3D>(undefined);
@@ -33,12 +27,6 @@ function App() {
     }, 500);
   }, []);
 
-  useEffect(() => {
-    if (musicRef.current) {
-      musicRef.current.volume = currentVolume;
-    }
-  }, [musicRef, currentVolume]);
-
   // TODO: for debugging, remove
   useEffect(() => {
     console.log("hoveredMeshUseEffect");
@@ -47,60 +35,20 @@ function App() {
     }
   }, [hoveredMesh]);
 
-  // starts music if not already started
-  const playMusic = () => {
-    if (!playedMusic && musicRef.current) {
-      setPlayedMusic(true);
-      musicRef.current.play();
-      setIsMuted(false);
-    }
-  };
-
-  // mutes the volume
-  const toggleMute = () => {
-    playMusic();
-
-    // mobile protocols don't allow web apps to change audio volume
-    if (isMobile) {
-      if (musicRef.current) {
-        if (musicRef.current.paused) {
-          console.log("play");
-          musicRef.current.play();
-          setIsMuted(false);
-        } else {
-          console.log("pause");
-          musicRef.current.pause();
-          setIsMuted(true);
-        }
-      }
-    } else {
-      if (currentVolume === 0 && prevVolume !== 0) {
-        setCurrentVolume(prevVolume);
-        setIsMuted(false);
-      } else if (currentVolume === 0) {
-        setCurrentVolume(prevVolume);
-        setIsMuted(false);
-      } else {
-        setPrevVolume(currentVolume);
-        setCurrentVolume(0);
-        setIsMuted(true);
-      }
-    }
-  };
-
-  // Sets the volume to the provided value
-  const setVolume = (val: number) => {
-    playMusic();
-
-    if (val === 0) {
-      setCurrentVolume(0);
-      setPrevVolume(MAX_VOLUME / 2);
-      setIsMuted(true);
-    } else {
-      setCurrentVolume(val);
-      setPrevVolume(val);
-      setIsMuted(false);
-    }
+  const PlayButton = () => {
+    return (
+      <button
+        className="play-button"
+        onClick={() => {
+          setClickedPlay(true);
+          setTimeout(() => {
+            setLandingControlsVisible(false);
+          }, 300);
+        }}
+      >
+        Play
+      </button>
+    );
   };
 
   return (
@@ -156,18 +104,9 @@ function App() {
             {!isMobile && (
               <VolumeSlider volume={currentVolume} onChange={setVolume} />
             )}
+            {isMobile && <PlayButton />}
           </div>
-          <button
-            className="play-button"
-            onClick={() => {
-              setClickedPlay(true);
-              setTimeout(() => {
-                setLandingControlsVisible(false);
-              }, 300);
-            }}
-          >
-            Play
-          </button>
+          {!isMobile && <PlayButton />}
         </div>
       )}
 

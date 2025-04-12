@@ -35,7 +35,7 @@ body {
 }
 
 .ui-container {
-  width: 95vw;
+  width: 98vw;
   height: 10vh;
   position: absolute;
   top: 0;
@@ -52,7 +52,6 @@ body {
   color: white;
   cursor: pointer;
   font-size: 2em;
-  margin-top: 25px;
 }
 
 .play-button:hover {
@@ -63,6 +62,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 25px;
 }
 
 .volume-controls > img {
