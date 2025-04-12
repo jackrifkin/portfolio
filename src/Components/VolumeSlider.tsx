@@ -1,10 +1,12 @@
-import { useContext } from "react";
-import { VolumeContext } from "../Contexts/VolumeContext";
 import { MAX_VOLUME } from "../App";
 
-const VolumeSlider = ({ onChange }: { onChange: (val: number) => void }) => {
-  const volume = useContext(VolumeContext);
-
+const VolumeSlider = ({
+  volume,
+  onChange,
+}: {
+  volume: number;
+  onChange: (val: number) => void;
+}) => {
   return (
     <input
       type="range"

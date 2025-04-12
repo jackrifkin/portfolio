@@ -6,10 +6,10 @@ import { Canvas } from "@react-three/fiber";
 import { Bloom, EffectComposer, Outline } from "@react-three/postprocessing";
 import { KernelSize } from "postprocessing";
 import MuteButton from "./Components/MuteButton";
-import { VolumeContext } from "./Contexts/VolumeContext";
 import VolumeSlider from "./Components/VolumeSlider";
 import { Object3D } from "three";
 import { isMobile } from "react-device-detect";
+import { MutedContext } from "./Contexts/MutedContext";
 
 export const MAX_VOLUME = 0.4;
 
@@ -21,6 +21,7 @@ function App() {
   const [currentVolume, setCurrentVolume] = useState<number>(
     isMobile ? MAX_VOLUME / 2 : 0
   );
+  const [isMuted, setIsMuted] = useState<boolean>(true);
   const [landingControlsVisible, setLandingControlsVisible] =
     useState<boolean>(false);
   const hoveredMesh = useRef<Object3D>(undefined);
@@ -51,6 +52,7 @@ function App() {
     if (!playedMusic && musicRef.current) {
       setPlayedMusic(true);
       musicRef.current.play();
+      setIsMuted(false);
     }
   };
 
@@ -64,19 +66,24 @@ function App() {
         if (musicRef.current.paused) {
           console.log("play");
           musicRef.current.play();
+          setIsMuted(false);
         } else {
           console.log("pause");
           musicRef.current.pause();
+          setIsMuted(true);
         }
       }
     } else {
       if (currentVolume === 0 && prevVolume !== 0) {
         setCurrentVolume(prevVolume);
+        setIsMuted(false);
       } else if (currentVolume === 0) {
         setCurrentVolume(prevVolume);
+        setIsMuted(false);
       } else {
         setPrevVolume(currentVolume);
         setCurrentVolume(0);
+        setIsMuted(true);
       }
     }
   };
@@ -88,18 +95,16 @@ function App() {
     if (val === 0) {
       setCurrentVolume(0);
       setPrevVolume(MAX_VOLUME / 2);
+      setIsMuted(true);
     } else {
       setCurrentVolume(val);
       setPrevVolume(val);
+      setIsMuted(false);
     }
   };
 
-  const isMuted = () => {
-    return isMobile ? musicRef.current?.paused ?? true : currentVolume === 0;
-  };
-
   return (
-    <VolumeContext.Provider value={currentVolume}>
+    <MutedContext.Provider value={isMuted}>
       <audio loop ref={musicRef} src="background_music.mp3" />
       {/* Scene */}
       <Canvas
@@ -144,11 +149,13 @@ function App() {
         >
           <div className="volume-controls">
             <MuteButton
-              isMuted={isMuted()}
+              isMuted={isMuted}
               toggleMute={toggleMute}
               height={"40px"}
             />
-            {!isMobile && <VolumeSlider onChange={setVolume} />}
+            {!isMobile && (
+              <VolumeSlider volume={currentVolume} onChange={setVolume} />
+            )}
           </div>
           <button
             className="play-button"
@@ -169,15 +176,17 @@ function App() {
         <div className="ui-container">
           <div className="volume-controls">
             <MuteButton
-              isMuted={isMuted()}
+              isMuted={isMuted}
               toggleMute={toggleMute}
               height={"32px"}
             />
-            {!isMobile && <VolumeSlider onChange={setVolume} />}
+            {!isMobile && (
+              <VolumeSlider volume={currentVolume} onChange={setVolume} />
+            )}
           </div>
         </div>
       )}
-    </VolumeContext.Provider>
+    </MutedContext.Provider>
   );
 }
 
