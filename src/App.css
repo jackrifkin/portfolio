@@ -1,7 +1,9 @@
+html,
 body {
   background-color: #000;
   color: white;
   overflow: hidden;
+  overscroll-behavior: none; /* to prevent scrolling past viewport on mobile */
 }
 
 .fullscreen,
@@ -82,4 +84,5 @@ body {
 .title {
   font-size: 6em;
   text-align: center;
+  margin-top: -0.5em;
 }
