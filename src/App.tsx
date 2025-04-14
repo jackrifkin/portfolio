@@ -1,15 +1,19 @@
 import "./App.css";
 import { Loader, OrbitControls } from "@react-three/drei";
 import { Suspense, useEffect, useState } from "react";
-import SceneModels from "./Components/SceneModels";
+import SceneModels from "./Components/SceneModels/SceneModels";
 import { Canvas } from "@react-three/fiber";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { KernelSize } from "postprocessing";
-import MuteButton from "./Components/MuteButton";
-import VolumeSlider from "./Components/VolumeSlider";
+import MuteButton from "./Components/UIComponents/MuteButton";
+import VolumeSlider from "./Components/UIComponents/VolumeSlider";
 import { isMobile } from "react-device-detect";
 import { MutedContext } from "./Contexts/MutedContext";
 import useBackgroundMusic from "./Hooks/useBackgroundMusic";
+import Info from "./Components/UIComponents/Info";
+import Navbar from "./Components/UIComponents/Navbar";
+
+export const HOVER_COLOR = "#ee2cf5";
 
 function App() {
   const { currentVolume, isMuted, setVolume, toggleMute, musicRef } =
@@ -84,12 +88,8 @@ function App() {
           style={clickedPlay ? { opacity: "0%" } : undefined}
         >
           <h1 className="title special-gothic">Jack Rifkin</h1>
-          <div className="volume-controls">
-            <MuteButton
-              isMuted={isMuted}
-              toggleMute={toggleMute}
-              height={"40px"}
-            />
+          <div className="volume-controls" style={{ marginBottom: "24px" }}>
+            <MuteButton isMuted={isMuted} toggleMute={toggleMute} height={40} />
             {!isMobile && (
               <VolumeSlider volume={currentVolume} onChange={setVolume} />
             )}
@@ -107,13 +107,15 @@ function App() {
               <MuteButton
                 isMuted={isMuted}
                 toggleMute={toggleMute}
-                height={"32px"}
+                height={32}
               />
               {!isMobile && (
                 <VolumeSlider volume={currentVolume} onChange={setVolume} />
               )}
             </div>
           </div>
+          <Navbar />
+          <Info />
         </>
       )}
     </MutedContext.Provider>

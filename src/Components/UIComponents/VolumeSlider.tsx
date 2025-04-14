@@ -1,4 +1,4 @@
-import { MAX_VOLUME } from "../Hooks/useBackgroundMusic";
+import { MAX_VOLUME } from "../../Hooks/useBackgroundMusic";
 
 const VolumeSlider = ({
   volume,

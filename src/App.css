@@ -35,13 +35,13 @@ body {
 }
 
 .ui-container {
-  width: 98vw;
+  width: 100vw;
   height: 10vh;
   position: absolute;
-  top: 16px;
+  top: 0;
   left: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: row;
 }
@@ -62,16 +62,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px;
 }
 
-.volume-controls > img {
-  margin-right: 24px;
-}
-
-.mute-button {
-  cursor: pointer;
-  user-select: none;
+.volume-controls > div {
+  margin: 0 24px;
 }
 
 .special-gothic {

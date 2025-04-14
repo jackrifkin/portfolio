@@ -1,6 +1,6 @@
 import { useFBX, useGLTF, useTexture } from "@react-three/drei";
-import { modelSources } from "../sources";
-import { ModelSource } from "../types";
+import { modelSources } from "../../sources";
+import { ModelSource } from "../../types";
 import { useContext, useEffect, useRef, useState } from "react";
 import {
   AnimationMixer,
@@ -10,7 +10,7 @@ import {
   MeshStandardMaterial,
 } from "three";
 import { useFrame } from "@react-three/fiber";
-import { MutedContext } from "../Contexts/MutedContext";
+import { MutedContext } from "../../Contexts/MutedContext";
 
 // Issues with gltf animations, using FBX for animated models
 const AnimatedEmissiveFBXModel = ({ model }: { model: ModelSource }) => {
@@ -142,9 +142,7 @@ const Model = ({ model }: { model: ModelSource }) => {
     if (meshRef.current) {
       const material = meshRef.current.material as MeshStandardMaterial;
       if (hovered) {
-        const time = performance.now() / 250;
-        material.emissive = new Color(0.5, 0.5, 0.5);
-        material.emissiveIntensity = 0.5 + Math.sin(time) / 3;
+        material.emissive = new Color(0.4, 0.4, 0.4);
       } else {
         material.emissive = new Color(0);
       }
