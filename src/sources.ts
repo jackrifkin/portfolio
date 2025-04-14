@@ -61,8 +61,3 @@ export const modelSources: ModelSource[] = [
     isHoverable: true,
   },
 ];
-
-export const loadingModelSource: ModelSource = {
-  name: "cat",
-  texture: "cat_speakers_flood_lights_texture.png",
-};

@@ -1,14 +1,13 @@
 import { useFBX, useGLTF, useTexture } from "@react-three/drei";
 import { modelSources } from "../sources";
 import { ModelSource } from "../types";
-import { RefObject, useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
   AnimationMixer,
   Color,
   LoopRepeat,
   Mesh,
   MeshStandardMaterial,
-  Object3D,
 } from "three";
 import { useFrame } from "@react-three/fiber";
 import { MutedContext } from "../Contexts/MutedContext";
@@ -108,16 +107,11 @@ const EmissiveModel = ({ model }: { model: ModelSource }) => {
   return <primitive object={scene} />;
 };
 
-const Model = ({
-  model,
-  hoverableMeshRef,
-}: {
-  model: ModelSource;
-  hoverableMeshRef: RefObject<Object3D | undefined>;
-}) => {
+const Model = ({ model }: { model: ModelSource }) => {
   const { scene, nodes } = useGLTF(`/Models/${model.name}.gltf`);
   const texture = useTexture(`/Textures/${model.texture}`);
-  const geoRef = useRef<Object3D>(undefined);
+  const meshRef = useRef<Mesh>(null!);
+  const [hovered, setHovered] = useState<boolean>(false);
   texture.flipY = false;
 
   useEffect(() => {
@@ -127,27 +121,38 @@ const Model = ({
           map: texture,
           transparent: model.hasTransparency ?? false,
         });
+        meshRef.current = child;
       }
     });
   }, [model.hasTransparency, nodes, scene, texture]);
 
   const handlePointerOver = () => {
-    if (model.isHoverable && hoverableMeshRef) {
-      console.log(model.name);
-      hoverableMeshRef.current = geoRef.current;
+    if (model.isHoverable) {
+      setHovered(true);
     }
   };
 
   const handlePointerLeave = () => {
-    if (model.isHoverable && hoverableMeshRef) {
-      console.log(`leaving ${model.name}`);
-      hoverableMeshRef.current = undefined;
+    if (model.isHoverable) {
+      setHovered(false);
     }
   };
 
+  useFrame(() => {
+    if (meshRef.current) {
+      const material = meshRef.current.material as MeshStandardMaterial;
+      if (hovered) {
+        const time = performance.now() / 250;
+        material.emissive = new Color(0.5, 0.5, 0.5);
+        material.emissiveIntensity = 0.5 + Math.sin(time) / 3;
+      } else {
+        material.emissive = new Color(0);
+      }
+    }
+  });
+
   return (
     <primitive
-      ref={geoRef}
       object={scene}
       onPointerOver={handlePointerOver}
       onPointerLeave={handlePointerLeave}
@@ -155,11 +160,7 @@ const Model = ({
   );
 };
 
-const SceneModels = ({
-  hoverableMeshRef,
-}: {
-  hoverableMeshRef: RefObject<Object3D | undefined>;
-}) => {
+const SceneModels = () => {
   return modelSources.map((model, index) =>
     model.hasBloom && model.emissiveMap ? (
       model.isAnimated ? (
@@ -168,7 +169,7 @@ const SceneModels = ({
         <EmissiveModel model={model} key={index} />
       )
     ) : (
-      <Model model={model} key={index} hoverableMeshRef={hoverableMeshRef} />
+      <Model model={model} key={index} />
     )
   );
 };

@@ -10,7 +10,6 @@ const MuteButton = ({
   isMuted,
   ...props
 }: MuteButtonProps) => {
-  console.log(isMuted);
   return (
     <img
       {...props}

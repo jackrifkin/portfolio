@@ -38,7 +38,7 @@ body {
   width: 98vw;
   height: 10vh;
   position: absolute;
-  top: 0;
+  top: 16px;
   left: 0;
   display: flex;
   justify-content: flex-end;
@@ -71,4 +71,20 @@ body {
 
 .mute-button {
   cursor: pointer;
+  user-select: none;
+}
+
+.special-gothic {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.title {
+  font-size: 6em;
+  text-align: center;
 }

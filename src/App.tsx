@@ -1,13 +1,12 @@
 import "./App.css";
 import { Loader, OrbitControls } from "@react-three/drei";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import SceneModels from "./Components/SceneModels";
 import { Canvas } from "@react-three/fiber";
-import { Bloom, EffectComposer, Outline } from "@react-three/postprocessing";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { KernelSize } from "postprocessing";
 import MuteButton from "./Components/MuteButton";
 import VolumeSlider from "./Components/VolumeSlider";
-import { Object3D } from "three";
 import { isMobile } from "react-device-detect";
 import { MutedContext } from "./Contexts/MutedContext";
 import useBackgroundMusic from "./Hooks/useBackgroundMusic";
@@ -18,7 +17,6 @@ function App() {
   const [clickedPlay, setClickedPlay] = useState<boolean>(false);
   const [landingControlsVisible, setLandingControlsVisible] =
     useState<boolean>(false);
-  const hoveredMesh = useRef<Object3D>(undefined);
 
   // give time for the loader to mount
   useEffect(() => {
@@ -27,18 +25,10 @@ function App() {
     }, 500);
   }, []);
 
-  // TODO: for debugging, remove
-  useEffect(() => {
-    console.log("hoveredMeshUseEffect");
-    if (hoveredMesh.current) {
-      console.log("hoveredmesh" + hoveredMesh.current.name);
-    }
-  }, [hoveredMesh]);
-
   const PlayButton = () => {
     return (
       <button
-        className="play-button"
+        className="play-button montserrat"
         onClick={() => {
           setClickedPlay(true);
           setTimeout(() => {
@@ -62,7 +52,7 @@ function App() {
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.6} color={[1, 1, 1.5]} />
-          <SceneModels hoverableMeshRef={hoveredMesh} />
+          <SceneModels />
           <OrbitControls
             minDistance={11}
             maxDistance={40}
@@ -79,15 +69,13 @@ function App() {
               luminanceSmoothing={0.5}
               mipmapBlur
             />
-            <Outline
-              selection={hoveredMesh?.current}
-              edgeStrength={5}
-              visibleEdgeColor={1}
-            />
           </EffectComposer>
         </Suspense>
       </Canvas>
-      <Loader containerStyles={{ backgroundColor: "black" }} />
+      <Loader
+        containerStyles={{ backgroundColor: "black" }}
+        dataInterpolation={(p) => `${p.toFixed(2)}%`}
+      />
 
       {/* After loader, before models */}
       {landingControlsVisible && (
@@ -95,6 +83,7 @@ function App() {
           className="fullscreen landing"
           style={clickedPlay ? { opacity: "0%" } : undefined}
         >
+          <h1 className="title special-gothic">Jack Rifkin</h1>
           <div className="volume-controls">
             <MuteButton
               isMuted={isMuted}
@@ -112,18 +101,20 @@ function App() {
 
       {/* In-scene UI */}
       {clickedPlay && (
-        <div className="ui-container">
-          <div className="volume-controls">
-            <MuteButton
-              isMuted={isMuted}
-              toggleMute={toggleMute}
-              height={"32px"}
-            />
-            {!isMobile && (
-              <VolumeSlider volume={currentVolume} onChange={setVolume} />
-            )}
+        <>
+          <div className="ui-container">
+            <div className="volume-controls">
+              <MuteButton
+                isMuted={isMuted}
+                toggleMute={toggleMute}
+                height={"32px"}
+              />
+              {!isMobile && (
+                <VolumeSlider volume={currentVolume} onChange={setVolume} />
+              )}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </MutedContext.Provider>
   );
