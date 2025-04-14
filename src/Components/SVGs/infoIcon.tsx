@@ -14,7 +14,7 @@ const InfoIcon = ({
 
   return (
     <div
-      style={{ cursor: "pointer", zIndex: 100 }}
+      style={{ cursor: "pointer", zIndex: 100, pointerEvents: "auto" }}
       onClick={toggleOpened}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
