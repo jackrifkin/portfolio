@@ -22,7 +22,7 @@ const Info = () => {
           </a>
           <br />
           Music licensed by Jamendo Licensing:{" "}
-          <a target="_blank" href="licensing.jamendo.com">
+          <a target="_blank" href="https://licensing.jamendo.com">
             licensing.jamendo.com
           </a>
           <br />
