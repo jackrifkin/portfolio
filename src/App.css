@@ -1,3 +1,7 @@
+:root {
+  --pink: #ee2cf5;
+}
+
 html,
 body {
   background-color: #000;
@@ -59,7 +63,7 @@ body {
 }
 
 .play-button:hover {
-  color: #ee2cf5;
+  color: var(--pink);
 }
 
 .volume-controls {

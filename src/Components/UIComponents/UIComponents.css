@@ -19,6 +19,7 @@
   flex-direction: column;
   transition: transform 0.3s ease;
   text-align: end;
+  pointer-events: auto;
 }
 
 .content-container.open {
@@ -79,4 +80,10 @@ a {
   margin-bottom: 24px;
   font-weight: 500;
   font-size: 1.5em;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  color: var(--pink);
 }

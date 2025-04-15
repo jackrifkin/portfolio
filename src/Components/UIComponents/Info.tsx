@@ -13,12 +13,11 @@ const Info = () => {
           height={24}
         />
         <p className="montserrat">
-          Earth Heaven by Deep-X -{" "}
           <a
             target="_blank"
             href="https://licensing.jamendo.com/en/tracks/x8dM27CXqyZ/earth-heaven"
           >
-            link
+            Earth Heaven by Deep-X
           </a>
           <br />
           Music licensed by Jamendo Licensing:{" "}
