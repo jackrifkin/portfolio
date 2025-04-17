@@ -1,0 +1,21 @@
+.projects::-webkit-scrollbar,
+.experience::-webkit-scrollbar {
+  display: none;
+}
+
+.tv-title-container {
+  height: 3.5em;
+  width: 3.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.tv-title {
+  font-size: 0.45em;
+  color: black;
+  user-select: none;
+  height: fit-content;
+  text-align: center;
+}

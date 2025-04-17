@@ -8,17 +8,13 @@ type MuteButtonProps = {
   isMuted: boolean;
 };
 
-const MuteButton = ({
-  toggleMute: toggleMuted,
-  height,
-  isMuted,
-}: MuteButtonProps) => {
+const MuteButton = ({ toggleMute, height, isMuted }: MuteButtonProps) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
   return (
     <div
       style={{ cursor: "pointer", height: height }}
-      onClick={toggleMuted}
+      onClick={toggleMute}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -97,14 +93,6 @@ const MuteButton = ({
       )}
     </div>
   );
-  // <img
-  //   {...props}
-  //   className="mute-button"
-  //   height={height}
-  //   onClick={toggleMuted}
-  //   alt={isMuted ? "muted" : "unmuted"}
-  //   src={isMuted ? "muted.svg" : "unmuted.svg"}
-  // />
 };
 
 export default MuteButton;

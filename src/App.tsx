@@ -12,6 +12,7 @@ import { MutedContext } from "./Contexts/MutedContext";
 import useBackgroundMusic from "./Hooks/useBackgroundMusic";
 import Info from "./Components/UIComponents/Info";
 import Navbar from "./Components/UIComponents/Navbar";
+import TVScreens from "./Components/TVScreens/TVScreens";
 
 export const HOVER_COLOR = "#ee2cf5";
 
@@ -57,12 +58,13 @@ function App() {
         <Suspense fallback={null}>
           <ambientLight intensity={0.6} color={[1, 1, 1.5]} />
           <SceneModels />
+          <TVScreens />
           <OrbitControls
-            minDistance={11}
-            maxDistance={40}
+            // minDistance={11}
+            // maxDistance={40}
             maxPolarAngle={Math.PI / 2 - 0.1}
             target={[0, 3, 0]}
-            enablePan={false}
+            // enablePan={false}
           />
           <color attach="background" args={["#000"]} />
           <EffectComposer>
