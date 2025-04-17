@@ -65,7 +65,7 @@ const TVScreens = () => {
       <TVTitleScreen
         meshPosition={[3.9, 3.37, 3.6]}
         meshRotation={[0, -Math.PI / 1.77, 0]}
-        htmlPosition={[isMobile ? -0.1 : 0, 0.05, 0.08]}
+        htmlPosition={[isMobile ? -0.4 : 0, 0.05, 0.08]}
         text="PROJECTS"
         hoverColor="#00e3fc"
       />
