@@ -19,3 +19,13 @@
   height: fit-content;
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  .tv-title-container {
+    border: 1px solid green;
+  }
+
+  .tv-title {
+    font-size: 0.375em;
+  }
+}

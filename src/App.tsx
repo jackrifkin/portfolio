@@ -52,6 +52,10 @@ function App() {
 
   return (
     <MutedContext.Provider value={isMuted}>
+      <Loader
+        containerStyles={{ backgroundColor: "black" }}
+        dataInterpolation={(p) => `${p.toFixed(2)}%`}
+      />
       <audio loop ref={musicRef} src="background_music.mp3" />
       {/* Scene */}
       <Canvas
@@ -76,10 +80,6 @@ function App() {
           </EffectComposer>
         </Suspense>
       </Canvas>
-      <Loader
-        containerStyles={{ backgroundColor: "black" }}
-        dataInterpolation={(p) => `${p.toFixed(2)}%`}
-      />
 
       {/* After loader, before models */}
       {landingControlsVisible && (
