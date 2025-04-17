@@ -77,12 +77,6 @@ body {
   margin: 0 24px;
 }
 
-@media screen and (max-width: 768px) {
-  .volume-controls {
-    margin-top: 1em;
-  }
-}
-
 .special-gothic {
   font-family: "Special Gothic Expanded One", sans-serif;
   font-weight: 400;
@@ -97,4 +91,15 @@ body {
   font-size: 6em;
   text-align: center;
   margin-top: -0.5em;
+}
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+  .volume-controls {
+    margin-top: 1em;
+  }
+
+  .title {
+    font-size: 4em;
+  }
 }
