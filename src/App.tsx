@@ -1,5 +1,5 @@
 import "./App.css";
-import { Loader, OrbitControls } from "@react-three/drei";
+import { Loader } from "@react-three/drei";
 import { Suspense, useEffect, useState } from "react";
 import SceneModels from "./Components/SceneModels/SceneModels";
 import { Canvas } from "@react-three/fiber";
@@ -13,6 +13,7 @@ import useBackgroundMusic from "./Hooks/useBackgroundMusic";
 import Info from "./Components/UIComponents/Info";
 import Navbar from "./Components/UIComponents/Navbar";
 import TVScreens from "./Components/TVScreens/TVScreens";
+import CameraController from "./Components/CameraController/CameraController";
 
 export const HOVER_COLOR = "#ee2cf5";
 
@@ -59,13 +60,7 @@ function App() {
           <ambientLight intensity={0.6} color={[1, 1, 1.5]} />
           <SceneModels />
           <TVScreens />
-          <OrbitControls
-            // minDistance={11}
-            // maxDistance={40}
-            maxPolarAngle={Math.PI / 2 - 0.1}
-            target={[0, 3, 0]}
-            // enablePan={false}
-          />
+          <CameraController />
           <color attach="background" args={["#000"]} />
           <EffectComposer>
             <Bloom
