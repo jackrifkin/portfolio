@@ -25,4 +25,8 @@
   .tv-title-container {
     margin-top: -1.5em;
   }
+
+  .tv-title {
+    font-size: 7.5px;
+  }
 }
