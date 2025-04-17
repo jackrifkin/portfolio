@@ -87,3 +87,9 @@ a {
 .nav-item:hover {
   color: var(--pink);
 }
+
+@media screen and (max-width: 768px) {
+  .nav-title {
+    font-size: 1.75em;
+  }
+}

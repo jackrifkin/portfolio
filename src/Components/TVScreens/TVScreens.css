@@ -19,3 +19,14 @@
   height: fit-content;
   text-align: center;
 }
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+  .tv-title-container {
+    margin-top: -1.5em;
+  }
+
+  .tv-title {
+    font-size: 7.5px;
+  }
+}
