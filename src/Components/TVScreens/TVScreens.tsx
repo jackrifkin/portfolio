@@ -63,7 +63,7 @@ const TVScreens = () => {
       />
       {/* PROJECTS TV SCREEN */}
       <TVTitleScreen
-        meshPosition={[3.9, 3.37, isMobile ? 3.5 : 3.6]}
+        meshPosition={[3.9, 3.37, isMobile ? 3.4 : 3.6]}
         meshRotation={[0, -Math.PI / 1.77, 0]}
         htmlPosition={[0, 0.05, 0.08]}
         text="PROJECTS"
