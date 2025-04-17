@@ -1,6 +1,6 @@
 import { useFBX, useGLTF, useTexture } from "@react-three/drei";
 import { modelSources } from "../../sources";
-import { ModelSource } from "../../types";
+import { FlyerNames, ModelSource } from "../../types";
 import { useContext, useEffect, useRef, useState } from "react";
 import {
   AnimationMixer,
@@ -9,8 +9,9 @@ import {
   Mesh,
   MeshStandardMaterial,
 } from "three";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { MutedContext } from "../../Contexts/MutedContext";
+import { handleFlyerClick } from "../../Util/CameraEventUtil";
 
 // Issues with gltf animations, using FBX for animated models
 const AnimatedEmissiveFBXModel = ({ model }: { model: ModelSource }) => {
@@ -112,6 +113,7 @@ const Model = ({ model }: { model: ModelSource }) => {
   const texture = useTexture(`/Textures/${model.texture}`);
   const meshRef = useRef<Mesh>(null!);
   const [hovered, setHovered] = useState<boolean>(false);
+  const { gl } = useThree();
   texture.flipY = false;
 
   useEffect(() => {
@@ -129,12 +131,20 @@ const Model = ({ model }: { model: ModelSource }) => {
   const handlePointerOver = () => {
     if (model.isHoverable) {
       setHovered(true);
+      gl.domElement.style.cursor = "pointer";
     }
   };
 
   const handlePointerLeave = () => {
     if (model.isHoverable) {
       setHovered(false);
+      gl.domElement.style.cursor = "default";
+    }
+  };
+
+  const handleClick = () => {
+    if (model.isHoverable) {
+      handleFlyerClick(model.name as FlyerNames);
     }
   };
 
@@ -154,6 +164,7 @@ const Model = ({ model }: { model: ModelSource }) => {
       object={scene}
       onPointerOver={handlePointerOver}
       onPointerLeave={handlePointerLeave}
+      onClick={handleClick}
     />
   );
 };

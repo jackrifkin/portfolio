@@ -14,6 +14,7 @@ import Info from "./Components/UIComponents/Info";
 import Navbar from "./Components/UIComponents/Navbar";
 import TVScreens from "./Components/TVScreens/TVScreens";
 import CameraController from "./Components/CameraController/CameraController";
+import { dispatchCameraEvent } from "./Util/CameraEventUtil";
 
 export const HOVER_COLOR = "#ee2cf5";
 
@@ -31,17 +32,19 @@ function App() {
     }, 500);
   }, []);
 
+  const handleClickPlay = () => {
+    setClickedPlay(true);
+    setTimeout(() => {
+      setLandingControlsVisible(false);
+    }, 300);
+    setTimeout(() => {
+      dispatchCameraEvent("focus-camera", "home", 2);
+    }, 150);
+  };
+
   const PlayButton = () => {
     return (
-      <button
-        className="play-button montserrat"
-        onClick={() => {
-          setClickedPlay(true);
-          setTimeout(() => {
-            setLandingControlsVisible(false);
-          }, 300);
-        }}
-      >
+      <button className="play-button montserrat" onClick={handleClickPlay}>
         Play
       </button>
     );
@@ -54,7 +57,7 @@ function App() {
       <Canvas
         style={{ visibility: clickedPlay ? "visible" : "hidden" }}
         className="canvas"
-        camera={{ position: [5, 3, 10] }}
+        camera={{ position: [-10, 25, 5] }}
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.6} color={[1, 1, 1.5]} />

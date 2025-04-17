@@ -1,6 +1,7 @@
 import { Html } from "@react-three/drei";
 import "./TVScreens.css";
 import { useState } from "react";
+import { dispatchCameraEvent } from "../../Util/CameraEventUtil";
 
 type TVTitleScreenProps = {
   meshPosition: [x: number, y: number, z: number];
@@ -19,6 +20,13 @@ const TVTitleScreen = ({
 }: TVTitleScreenProps) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
+  const handleClick = () => {
+    dispatchCameraEvent(
+      "focus-camera",
+      text === "PROJECTS" ? "projects" : "experience"
+    );
+  };
+
   return (
     <mesh position={meshPosition} rotation={meshRotation}>
       <planeGeometry args={[1.6, 1.5]} />
@@ -30,6 +38,7 @@ const TVTitleScreen = ({
       <Html transform occlude position={htmlPosition}>
         <div
           className="tv-title-container"
+          onClick={handleClick}
           onPointerOver={() => setHovered(true)}
           onPointerLeave={() => setHovered(false)}
         >
