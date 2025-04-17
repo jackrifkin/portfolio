@@ -20,9 +20,9 @@
   text-align: center;
 }
 
+/* MOBILE */
 @media screen and (max-width: 768px) {
   .tv-title-container {
-    border: 1px solid green;
     margin-top: -1.5em;
   }
 
