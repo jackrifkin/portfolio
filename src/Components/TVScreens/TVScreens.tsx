@@ -2,6 +2,7 @@ import { Html } from "@react-three/drei";
 import "./TVScreens.css";
 import { useState } from "react";
 import { dispatchCameraEvent } from "../../Util/CameraEventUtil";
+import { isMobile } from "react-device-detect";
 
 type TVTitleScreenProps = {
   meshPosition: [x: number, y: number, z: number];
@@ -62,7 +63,7 @@ const TVScreens = () => {
       />
       {/* PROJECTS TV SCREEN */}
       <TVTitleScreen
-        meshPosition={[3.9, 3.37, 3.6]}
+        meshPosition={[3.9, 3.37, isMobile ? 3.5 : 3.6]}
         meshRotation={[0, -Math.PI / 1.77, 0]}
         htmlPosition={[0, 0.05, 0.08]}
         text="PROJECTS"
