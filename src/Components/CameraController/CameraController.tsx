@@ -11,7 +11,7 @@ type TargetProps = {
   duration: number;
 };
 
-export const DEFAULT_TRANSITION_DURATION = 0.5;
+export const DEFAULT_TRANSITION_DURATION = 1;
 
 const CameraController = () => {
   const cameraRef = useRef(null);
