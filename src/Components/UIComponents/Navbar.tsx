@@ -10,13 +10,18 @@ const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   const handleClick = (item: string) => {
-    setOpen((o) => !o);
+    setOpen(false);
     dispatchCameraEvent("focus-camera", item.toLowerCase() as CameraLocations);
   };
 
   return (
     <div className="nav-container">
-      <h1 className="nav-title special-gothic">Jack Rifkin</h1>
+      <h1
+        onClick={() => handleClick("home")}
+        className="nav-title special-gothic"
+      >
+        Jack Rifkin
+      </h1>
       <div className={`navlist-container  ${open ? "open" : ""}`}>
         <Arrow open={open} onClick={() => setOpen((o) => !o)} />
         <ul className="navlist">

@@ -8,8 +8,8 @@ import {
 
 const LOCATION_DETAIL_MAP = {
   projects: {
-    position: [2.568, 3.535, 3.354],
-    lookAt: [3, 3.5, 3.44],
+    position: [2.568, 3.4, 3.354],
+    lookAt: [3, 3.4, 3.44],
     transitionDuration: DEFAULT_TRANSITION_DURATION,
     location: "projects",
   },

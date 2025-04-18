@@ -43,6 +43,12 @@ a {
 
 .nav-title {
   font-size: 2.5em;
+  pointer-events: auto;
+}
+
+.nav-title:hover {
+  color: var(--pink);
+  cursor: pointer;
 }
 
 .arrow {
@@ -86,6 +92,27 @@ a {
 
 .nav-item:hover {
   color: var(--pink);
+}
+
+.overlay-container {
+  pointer-events: none;
+}
+
+.experience-overlay,
+.projects-overlay {
+  position: relative;
+  left: -16px;
+  height: 550px;
+  width: 600px;
+  background-color: aqua;
+  opacity: 50%;
+}
+
+.projects-overlay {
+  background-color: hotpink;
+  width: 650px;
+  height: 600px;
+  opacity: 50%;
 }
 
 @media screen and (max-width: 768px) {

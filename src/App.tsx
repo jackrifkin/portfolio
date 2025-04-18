@@ -13,8 +13,18 @@ import useBackgroundMusic from "./Hooks/useBackgroundMusic";
 import Info from "./Components/UIComponents/Info";
 import Navbar from "./Components/UIComponents/Navbar";
 import TVScreens from "./Components/TVScreens/TVScreens";
-import CameraController from "./Components/CameraController/CameraController";
-import { dispatchCameraEvent } from "./Util/CameraEventUtil";
+import CameraController, {
+  DEFAULT_TRANSITION_DURATION,
+} from "./Components/CameraController/CameraController";
+import {
+  addCameraEventListener,
+  dispatchCameraEvent,
+} from "./Util/CameraEventUtil";
+import {
+  ExperienceOverlay,
+  ProjectsOverlay,
+} from "./Components/UIComponents/TVOverlays";
+import { CameraLocations } from "./types";
 
 export const HOVER_COLOR = "#ee2cf5";
 
@@ -24,12 +34,28 @@ function App() {
   const [clickedPlay, setClickedPlay] = useState<boolean>(false);
   const [landingControlsVisible, setLandingControlsVisible] =
     useState<boolean>(false);
+  const [currentLocation, setCurrentLocation] = useState<
+    CameraLocations | undefined
+  >(undefined);
 
   // give time for the loader to mount
   useEffect(() => {
     setTimeout(() => {
       setLandingControlsVisible(true);
     }, 500);
+  }, []);
+
+  useEffect(() => {
+    const removeFocusListener = addCameraEventListener("focus-camera", (e) => {
+      const { location } = e.detail;
+
+      setCurrentLocation(undefined);
+      setTimeout(() => {
+        setCurrentLocation(location);
+      }, DEFAULT_TRANSITION_DURATION * 1000);
+    });
+
+    return removeFocusListener;
   }, []);
 
   const handleClickPlay = () => {
@@ -116,6 +142,8 @@ function App() {
           </div>
           <Navbar />
           <Info />
+          {currentLocation === "experience" && <ExperienceOverlay />}
+          {currentLocation === "projects" && <ProjectsOverlay />}
         </>
       )}
     </MutedContext.Provider>
