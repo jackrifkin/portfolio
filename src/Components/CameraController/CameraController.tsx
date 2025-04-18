@@ -75,11 +75,11 @@ const CameraController = () => {
     <OrbitControls
       enabled={orbitEnabled}
       ref={cameraRef}
-      // minDistance={11}
-      // maxDistance={40}
+      minDistance={11}
+      maxDistance={40}
       maxPolarAngle={Math.PI / 2 - 0.1}
       target={[0, 3, 0]}
-      // enablePan={false}
+      enablePan={false}
     />
   );
 };
