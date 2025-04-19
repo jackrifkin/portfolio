@@ -150,7 +150,7 @@ a {
 }
 
 .wii-button {
-  background-image: url("wiiButton.svg");
+  background-image: url("/SVGAssets/wiiButton.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 72px;
@@ -171,7 +171,7 @@ a {
 }
 
 .wii-button:active {
-  background-image: url("wiiButtonPressed.svg");
+  background-image: url("/SVGAssets/wiiButtonPressed.svg");
 }
 
 @keyframes arrowFloatAnimation {

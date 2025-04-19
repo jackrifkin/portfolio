@@ -13,7 +13,7 @@ export const ProjectsOverlay = () => {
   return (
     <div className="fullscreen overlay-container">
       <div className="projects-overlay">
-        <img src="wiiMenuTopBar.svg" width={"100%"} />
+        <img src="/SVGAssets/wiiMenuTopBar.svg" width={"100%"} />
         <button
           onClick={() => dispatchCameraEvent("focus-camera", "home")}
           className="exit-button montserrat"
@@ -21,8 +21,8 @@ export const ProjectsOverlay = () => {
           EXIT
         </button>
         <div className="arrow-buttons">
-          <img src="wiiArrowLeft.svg" width={"24px"} />
-          <img src="wiiArrowRight.svg" width={"24px"} />
+          <img src="/SVGAssets/wiiArrowLeft.svg" width={"24px"} />
+          <img src="/SVGAssets/wiiArrowRight.svg" width={"24px"} />
         </div>
         <div className="wii-button-container">
           <div className="wii-button montserrat">Demo</div>
