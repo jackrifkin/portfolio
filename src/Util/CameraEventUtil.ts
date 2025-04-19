@@ -50,7 +50,10 @@ export const dispatchCameraEvent = <T extends CameraEvents>(
   window.dispatchEvent(event);
 };
 
-export const handleFlyerClick = (flyerName: FlyerNames): void => {
+export const handleFlyerClick = (
+  flyerName: FlyerNames,
+  externalLink?: string
+): void => {
   switch (flyerName) {
     case "experience_flyer":
       dispatchCameraEvent("focus-camera", "experience");
@@ -62,10 +65,8 @@ export const handleFlyerClick = (flyerName: FlyerNames): void => {
       dispatchCameraEvent("focus-camera", "links");
       break;
     case "github_flyer":
-      window.open("https://www.github.com/jackrifkin", "_blank");
-      break;
     case "linkedin_flyer":
-      window.open("https://www.linkedin.com/in/jackrifkin/", "_blank");
+      window.open(externalLink, "_blank");
       break;
   }
 };

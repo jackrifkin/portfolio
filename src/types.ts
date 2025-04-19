@@ -8,6 +8,7 @@ export type ModelSource = {
   hasBloom?: boolean;
   emissiveMap?: string;
   isAnimated?: boolean;
+  externalLink?: string;
 };
 
 export type FlyerNames =

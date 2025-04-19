@@ -44,11 +44,13 @@ export const modelSources: ModelSource[] = [
     name: "github_flyer",
     texture: "github_flyer_texture.png",
     isHoverable: true,
+    externalLink: "https://www.github.com/jackrifkin",
   },
   {
     name: "linkedin_flyer",
     texture: "linkedin_flyer_texture.png",
     isHoverable: true,
+    externalLink: "https://www.linkedin.com/in/jackrifkin",
   },
   {
     name: "links_flyer",

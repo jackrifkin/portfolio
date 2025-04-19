@@ -144,7 +144,7 @@ const Model = ({ model }: { model: ModelSource }) => {
 
   const handleClick = () => {
     if (model.isHoverable) {
-      handleFlyerClick(model.name as FlyerNames);
+      handleFlyerClick(model.name as FlyerNames, model.externalLink);
     }
   };
 
