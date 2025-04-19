@@ -114,6 +114,20 @@ function App() {
           style={clickedPlay ? { opacity: "0%" } : undefined}
         >
           <h1 className="title special-gothic">Jack Rifkin</h1>
+          {/* TODO: Remove */}
+          <h2
+            className="montserrat"
+            style={{
+              marginTop: 0,
+              marginBottom: "50px",
+              color: "var(--pink)",
+              textAlign: "center",
+              lineHeight: "1.5em",
+            }}
+          >
+            Development still in progress &mdash; More coming soon! <br />
+            (But feel free to browse anyway)
+          </h2>
           <div className="volume-controls" style={{ marginBottom: "24px" }}>
             <MuteButton isMuted={isMuted} toggleMute={toggleMute} height={40} />
             {!isMobile && (

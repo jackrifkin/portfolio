@@ -59,9 +59,13 @@ export const handleFlyerClick = (flyerName: FlyerNames): void => {
       dispatchCameraEvent("focus-camera", "projects");
       break;
     case "links_flyer":
-    case "github_flyer":
-    case "linkedin_flyer":
       dispatchCameraEvent("focus-camera", "links");
+      break;
+    case "github_flyer":
+      window.open("https://www.github.com/jackrifkin", "_blank");
+      break;
+    case "linkedin_flyer":
+      window.open("https://www.linkedin.com/in/jackrifkin/", "_blank");
       break;
   }
 };
