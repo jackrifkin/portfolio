@@ -92,7 +92,7 @@ function App() {
         <Suspense fallback={null}>
           <ambientLight intensity={0.6} color={[1, 1, 1.5]} />
           <SceneModels />
-          <TVScreens />
+          <TVScreens currentLocation={currentLocation} />
           <CameraController />
           <color attach="background" args={["#000"]} />
           <EffectComposer>
@@ -114,7 +114,7 @@ function App() {
           style={clickedPlay ? { opacity: "0%" } : undefined}
         >
           <h1 className="title special-gothic">Jack Rifkin</h1>
-          {/* TODO: Remove */}
+          {/* ---- TODO: Remove ---- */}
           <h2
             className="montserrat"
             style={{
@@ -128,6 +128,7 @@ function App() {
             Development still in progress &mdash; More coming soon! <br />
             (But feel free to browse anyway)
           </h2>
+          {/* ----- */}
           <div className="volume-controls" style={{ marginBottom: "24px" }}>
             <MuteButton isMuted={isMuted} toggleMute={toggleMute} height={40} />
             {!isMobile && (

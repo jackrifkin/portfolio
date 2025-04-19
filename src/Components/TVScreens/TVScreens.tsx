@@ -3,6 +3,7 @@ import "./TVScreens.css";
 import { useState } from "react";
 import { dispatchCameraEvent } from "../../Util/CameraEventUtil";
 import { isMobile } from "react-device-detect";
+import { CameraLocations } from "../../types";
 
 type TVTitleScreenProps = {
   meshPosition: [x: number, y: number, z: number];
@@ -50,25 +51,33 @@ const TVTitleScreen = ({
   );
 };
 
-const TVScreens = () => {
+const TVScreens = ({
+  currentLocation,
+}: {
+  currentLocation?: CameraLocations;
+}) => {
   return (
     <>
       {/* WORK EXPERIENCE TV SCREEN */}
-      <TVTitleScreen
-        meshPosition={[2.93, 3.37, -4.15]}
-        meshRotation={[0, -Math.PI / 6.4, 0]}
-        htmlPosition={isMobile ? [0, 0.05, 0.111] : [0, 0.05, 0.111]}
-        text="EXPERIENCE"
-        hoverColor="#fa6eff"
-      />
+      {currentLocation !== "experience" && (
+        <TVTitleScreen
+          meshPosition={[2.93, 3.37, -4.15]}
+          meshRotation={[0, -Math.PI / 6.4, 0]}
+          htmlPosition={isMobile ? [0, 0.05, 0.111] : [0, 0.05, 0.111]}
+          text="EXPERIENCE"
+          hoverColor="#fa6eff"
+        />
+      )}
       {/* PROJECTS TV SCREEN */}
-      <TVTitleScreen
-        meshPosition={[3.9, 3.37, 3.6]}
-        meshRotation={[0, -Math.PI / 1.77, 0]}
-        htmlPosition={isMobile ? [-0.25, 0.05, 0.09] : [0, 0.05, 0.09]}
-        text="PROJECTS"
-        hoverColor="#00e3fc"
-      />
+      {currentLocation !== "projects" && (
+        <TVTitleScreen
+          meshPosition={[3.9, 3.37, 3.6]}
+          meshRotation={[0, -Math.PI / 1.77, 0]}
+          htmlPosition={isMobile ? [-0.25, 0.05, 0.09] : [0, 0.05, 0.09]}
+          text="PROJECTS"
+          hoverColor="#00e3fc"
+        />
+      )}
     </>
   );
 };
