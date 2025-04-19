@@ -96,10 +96,6 @@ body {
 
 /* MOBILE */
 @media screen and (max-width: 768px) {
-  .volume-controls {
-    margin-top: 16px;
-  }
-
   .title {
     font-size: 4em;
   }
