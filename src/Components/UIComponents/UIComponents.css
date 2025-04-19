@@ -114,6 +114,7 @@ a {
   height: 540px;
   border-radius: 24px;
   overflow: hidden;
+  cursor: url("/WiiUIAssets/wiiCursor.png") 0 0, auto;
 }
 
 .exit-button {
@@ -129,12 +130,12 @@ a {
   font-size: larger;
   letter-spacing: 0.1em;
   padding: 0 16px;
-  cursor: pointer;
 }
 
 .exit-button:hover {
   color: var(--pink);
   border-color: var(--pink);
+  cursor: inherit;
 }
 
 .wii-button-container {
@@ -150,7 +151,7 @@ a {
 }
 
 .wii-button {
-  background-image: url("/SVGAssets/wiiButton.svg");
+  background-image: url("/WiiUIAssets/wiiButton.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 64px;
@@ -161,7 +162,6 @@ a {
   align-items: center;
   font-weight: 500;
   font-size: 1.75em;
-  cursor: pointer;
   user-select: none;
   transition: transform 0.2s ease;
 }
@@ -171,7 +171,7 @@ a {
 }
 
 .wii-button:active {
-  background-image: url("/SVGAssets/wiiButtonPressed.svg");
+  background-image: url("/WiiUIAssets/wiiButtonPressed.svg");
 }
 
 @keyframes arrowFloatAnimation {
@@ -199,7 +199,7 @@ a {
 .arrow-buttons > img:hover {
   transition: transform 0.2s ease;
   transform: scale(1.1);
-  cursor: pointer;
+  color: aqua;
 }
 
 @media screen and (max-width: 768px) {
