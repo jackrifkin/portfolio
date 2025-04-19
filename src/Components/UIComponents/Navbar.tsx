@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Arrow from "../SVGs/arrow";
 import "./UIComponents.css";
 import { dispatchCameraEvent } from "../../Util/CameraEventUtil";
-import { CameraLocations } from "../../types";
+import { CameraLocation } from "../../types";
+import { LocationContext } from "../../Contexts/LocationContext";
 
-const NAV_ITEMS = ["Home", "Projects", "Experience", "Links"];
+const NAV_ITEMS: CameraLocation[] = ["home", "projects", "experience", "links"];
 
 const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const currentLocation = useContext(LocationContext);
 
-  const handleClick = (item: string) => {
+  const handleClick = (item: CameraLocation) => {
     setOpen(false);
-    dispatchCameraEvent("focus-camera", item.toLowerCase() as CameraLocations);
+    if (item !== currentLocation) {
+      dispatchCameraEvent("focus-camera", item);
+    }
   };
 
   return (
@@ -31,7 +35,7 @@ const Navbar = () => {
               className="nav-item montserrat"
               key={index}
             >
-              {item}
+              {item.charAt(0).toUpperCase() + item.slice(1)}
             </li>
           ))}
         </ul>

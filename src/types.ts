@@ -19,13 +19,13 @@ export type FlyerNames =
   | "linkedin_flyer";
 
 export type CameraEvents = "focus-camera";
-export type CameraLocations = "home" | "projects" | "experience" | "links";
+export type CameraLocation = "home" | "projects" | "experience" | "links";
 
 interface CameraFocusEventDetails {
   position: Vector3 | [x: number, y: number, z: number];
   lookAt: Vector3 | [x: number, y: number, z: number];
   transitionDuration: number;
-  location: CameraLocations;
+  location: CameraLocation;
 }
 
 export interface CameraEventMap {

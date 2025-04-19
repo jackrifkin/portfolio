@@ -24,7 +24,8 @@ import {
   ExperienceOverlay,
   ProjectsOverlay,
 } from "./Components/UIComponents/TVOverlays";
-import { CameraLocations } from "./types";
+import { CameraLocation } from "./types";
+import { LocationContext } from "./Contexts/LocationContext";
 
 export const HOVER_COLOR = "#ee2cf5";
 
@@ -35,7 +36,7 @@ function App() {
   const [landingControlsVisible, setLandingControlsVisible] =
     useState<boolean>(false);
   const [currentLocation, setCurrentLocation] = useState<
-    CameraLocations | undefined
+    CameraLocation | undefined
   >(undefined);
 
   // give time for the loader to mount
@@ -78,89 +79,95 @@ function App() {
 
   return (
     <MutedContext.Provider value={isMuted}>
-      <Loader
-        containerStyles={{ backgroundColor: "black" }}
-        dataInterpolation={(p) => `${p.toFixed(2)}%`}
-      />
-      <audio loop ref={musicRef} src="background_music.mp3" />
-      {/* Scene */}
-      <Canvas
-        style={{ visibility: clickedPlay ? "visible" : "hidden" }}
-        className="canvas"
-        camera={{ position: [-10, 25, 5] }}
-      >
-        <Suspense fallback={null}>
-          <ambientLight intensity={0.6} color={[1, 1, 1.5]} />
-          <SceneModels />
-          <TVScreens currentLocation={currentLocation} />
-          <CameraController />
-          <color attach="background" args={["#000"]} />
-          <EffectComposer>
-            <Bloom
-              luminanceThreshold={0.5}
-              intensity={2}
-              kernelSize={KernelSize.VERY_LARGE}
-              luminanceSmoothing={0.5}
-              mipmapBlur
-            />
-          </EffectComposer>
-        </Suspense>
-      </Canvas>
-
-      {/* After loader, before models */}
-      {landingControlsVisible && (
-        <div
-          className="fullscreen landing"
-          style={clickedPlay ? { opacity: "0%" } : undefined}
+      <LocationContext.Provider value={currentLocation}>
+        <Loader
+          containerStyles={{ backgroundColor: "black" }}
+          dataInterpolation={(p) => `${p.toFixed(2)}%`}
+        />
+        <audio loop ref={musicRef} src="background_music.mp3" />
+        {/* Scene */}
+        <Canvas
+          style={{ visibility: clickedPlay ? "visible" : "hidden" }}
+          className="canvas"
+          camera={{ position: [-10, 25, 5] }}
         >
-          <h1 className="title special-gothic">Jack Rifkin</h1>
-          {/* ---- TODO: Remove ---- */}
-          <h2
-            className="montserrat"
-            style={{
-              marginTop: 0,
-              marginBottom: "50px",
-              color: "var(--pink)",
-              textAlign: "center",
-              lineHeight: "1.5em",
-            }}
-          >
-            Development still in progress &mdash; More coming soon! <br />
-            (But feel free to browse anyway)
-          </h2>
-          {/* ----- */}
-          <div className="volume-controls" style={{ marginBottom: "24px" }}>
-            <MuteButton isMuted={isMuted} toggleMute={toggleMute} height={40} />
-            {!isMobile && (
-              <VolumeSlider volume={currentVolume} onChange={setVolume} />
-            )}
-            {isMobile && <PlayButton />}
-          </div>
-          {!isMobile && <PlayButton />}
-        </div>
-      )}
+          <Suspense fallback={null}>
+            <ambientLight intensity={0.6} color={[1, 1, 1.5]} />
+            <SceneModels />
+            <TVScreens />
+            <CameraController />
+            <color attach="background" args={["#000"]} />
+            <EffectComposer>
+              <Bloom
+                luminanceThreshold={0.5}
+                intensity={2}
+                kernelSize={KernelSize.VERY_LARGE}
+                luminanceSmoothing={0.5}
+                mipmapBlur
+              />
+            </EffectComposer>
+          </Suspense>
+        </Canvas>
 
-      {/* In-scene UI */}
-      {clickedPlay && (
-        <>
-          <div className="ui-container">
-            <div className="volume-controls">
+        {/* After loader, before models */}
+        {landingControlsVisible && (
+          <div
+            className="fullscreen landing"
+            style={clickedPlay ? { opacity: "0%" } : undefined}
+          >
+            <h1 className="title special-gothic">Jack Rifkin</h1>
+            {/* ---- TODO: Remove ---- */}
+            <h2
+              className="montserrat"
+              style={{
+                marginTop: 0,
+                marginBottom: "50px",
+                color: "var(--pink)",
+                textAlign: "center",
+                lineHeight: "1.5em",
+              }}
+            >
+              Development still in progress &mdash; More coming soon! <br />
+              (But feel free to browse anyway)
+            </h2>
+            {/* ----- */}
+            <div className="volume-controls" style={{ marginBottom: "24px" }}>
               <MuteButton
                 isMuted={isMuted}
                 toggleMute={toggleMute}
-                height={32}
+                height={40}
               />
               {!isMobile && (
                 <VolumeSlider volume={currentVolume} onChange={setVolume} />
               )}
+              {isMobile && <PlayButton />}
             </div>
+            {!isMobile && <PlayButton />}
           </div>
-          <Navbar />
-          <Info />
-          {currentLocation === "experience" && <ExperienceOverlay />}
-          {currentLocation === "projects" && <ProjectsOverlay />}
-        </>
-      )}
+        )}
+
+        {/* In-scene UI */}
+        {clickedPlay && (
+          <>
+            <div className="ui-container">
+              <div className="volume-controls">
+                <MuteButton
+                  isMuted={isMuted}
+                  toggleMute={toggleMute}
+                  height={32}
+                />
+                {!isMobile && (
+                  <VolumeSlider volume={currentVolume} onChange={setVolume} />
+                )}
+              </div>
+            </div>
+            <Navbar />
+            <Info />
+            {currentLocation === "experience" && <ExperienceOverlay />}
+            {currentLocation === "projects" && <ProjectsOverlay />}
+          </>
+        )}
+      </LocationContext.Provider>
     </MutedContext.Provider>
   );
 }

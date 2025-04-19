@@ -1,9 +1,9 @@
 import { Html } from "@react-three/drei";
 import "./TVScreens.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { dispatchCameraEvent } from "../../Util/CameraEventUtil";
 import { isMobile } from "react-device-detect";
-import { CameraLocations } from "../../types";
+import { LocationContext } from "../../Contexts/LocationContext";
 
 type TVTitleScreenProps = {
   meshPosition: [x: number, y: number, z: number];
@@ -51,11 +51,8 @@ const TVTitleScreen = ({
   );
 };
 
-const TVScreens = ({
-  currentLocation,
-}: {
-  currentLocation?: CameraLocations;
-}) => {
+const TVScreens = () => {
+  const currentLocation = useContext(LocationContext);
   return (
     <>
       {/* WORK EXPERIENCE TV SCREEN */}

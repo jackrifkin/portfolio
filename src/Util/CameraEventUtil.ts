@@ -2,7 +2,7 @@ import { DEFAULT_TRANSITION_DURATION } from "../Components/CameraController/Came
 import {
   CameraEventMap,
   CameraEvents,
-  CameraLocations,
+  CameraLocation,
   FlyerNames,
 } from "../types";
 
@@ -35,7 +35,7 @@ const LOCATION_DETAIL_MAP = {
 
 export const dispatchCameraEvent = <T extends CameraEvents>(
   type: T,
-  location: CameraLocations,
+  location: CameraLocation,
   durationOverride?: number
 ): void => {
   const detail = { ...LOCATION_DETAIL_MAP[location] };
