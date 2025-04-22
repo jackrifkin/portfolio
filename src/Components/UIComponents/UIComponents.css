@@ -234,7 +234,7 @@ a {
   font-size: 3.25em;
 }
 
-.tivo-body {
+.tivo-menu-body {
   margin: 5% 0 10% 10%;
   border: 2px solid white;
   border-right: none;
@@ -243,6 +243,30 @@ a {
   height: 100%;
   box-shadow: 2px 2px 4px black;
   background-color: rgba(0, 0, 0, 0.4);
+
+  /* prevents absolute-ly positioned child elements
+   from changing position during animation 
+   (when the class has a 'transform' attribute) */
+  transform: scale(1);
+}
+
+@keyframes menuBodySlideAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(110%);
+  }
+  60% {
+    transform: translateX(110%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.tivo-menu-body.animate {
+  animation: menuBodySlideAnimation 1s ease 1;
 }
 
 #experience-float-1,
@@ -281,7 +305,7 @@ a {
 }
 
 #experience-float-1 {
-  top: 8%;
+  top: 9%;
   animation: experienceFloat1Animation 8s linear infinite;
 }
 
@@ -313,7 +337,6 @@ a {
 
 @keyframes workFloatAnimation {
   0% {
-    left: 20%;
     opacity: 0%;
   }
   50% {
@@ -380,19 +403,32 @@ a {
   transform: translateX(0);
 }
 
+.experience-list-item.closed::before {
+  content: none;
+}
+
 #up-arrow,
 #down-arrow {
   position: absolute;
   transition: transform 0.2s ease;
-  left: 50%;
+  left: 45%;
 }
 
 #down-arrow {
-  bottom: 56px;
+  bottom: 0;
 }
 
 #up-arrow:hover,
 #down-arrow:hover {
+  transform: scale(1.1);
+}
+
+#left-arrow {
+  position: absolute;
+  top: 42%;
+}
+
+#left-arrow:hover {
   transform: scale(1.1);
 }
 

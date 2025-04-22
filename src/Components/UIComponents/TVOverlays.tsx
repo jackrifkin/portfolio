@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { formatDateRange } from "../../types";
+import { Experience, formatDateRange } from "../../types";
 import { dispatchCameraEvent } from "../../Util/CameraEventUtil";
 import { experiences } from "./Content/experience";
 import "./UIComponents.css";
@@ -9,6 +9,33 @@ const MAX_PAGES = Math.ceil(experiences.length / EXPERIENCE_ELEMENTS_PER_PAGE);
 
 export const ExperienceOverlay = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentSelection, setCurrentSelection] = useState<Experience | null>(
+    null
+  );
+  const [menuVisible, setMenuVisible] = useState<boolean>(true);
+  const [shouldAnimate, setShouldAnimate] = useState<boolean>(false);
+  const [menuSelectable, setMenuSelectable] = useState<boolean>(true);
+
+  const handleMenuElementClick = (element: Experience) => {
+    setCurrentSelection(element);
+    toggleAnimation();
+    setTimeout(() => setMenuVisible(false), 500);
+  };
+
+  const handleBackArrowClick = () => {
+    setCurrentSelection(null);
+    toggleAnimation();
+    setTimeout(() => setMenuVisible(true), 500);
+  };
+
+  const toggleAnimation = () => {
+    setShouldAnimate(true);
+    setMenuSelectable(false);
+    setTimeout(() => {
+      setShouldAnimate(false);
+      setMenuSelectable(true);
+    }, 1000);
+  };
 
   return (
     <div className="fullscreen overlay-container">
@@ -26,8 +53,8 @@ export const ExperienceOverlay = () => {
             <h1 className="tivo-title roboto">Experience</h1>
           </div>
         </div>
-        <div className="tivo-body">
-          {currentPage !== 0 && (
+        <div className={`tivo-menu-body ${shouldAnimate ? "animate" : ""}`}>
+          {menuVisible && currentPage !== 0 && (
             <img
               onClick={() => setCurrentPage((p) => p - 1)}
               id="up-arrow"
@@ -35,7 +62,7 @@ export const ExperienceOverlay = () => {
               width={"50px"}
             />
           )}
-          {currentPage !== MAX_PAGES - 1 && (
+          {menuVisible && currentPage !== MAX_PAGES - 1 && (
             <img
               onClick={() => setCurrentPage((p) => p + 1)}
               id="down-arrow"
@@ -43,25 +70,44 @@ export const ExperienceOverlay = () => {
               width={"50px"}
             />
           )}
-          <ul className="experience-list">
-            {experiences
-              .slice(
-                currentPage * EXPERIENCE_ELEMENTS_PER_PAGE,
-                currentPage * EXPERIENCE_ELEMENTS_PER_PAGE +
-                  EXPERIENCE_ELEMENTS_PER_PAGE
-              )
-              .map((e) => {
-                return (
-                  <li className="experience-list-item roboto" key={e.id}>
-                    <p>{e.name}</p>
-                    <p style={{ textAlign: "end" }}>
-                      {formatDateRange(e.time)}
-                    </p>
-                    <img src={e.logoFilepath} height={"32px"} />
-                  </li>
-                );
-              })}
-          </ul>
+          {menuVisible && (
+            <ul className="experience-list">
+              {experiences
+                .slice(
+                  currentPage * EXPERIENCE_ELEMENTS_PER_PAGE,
+                  currentPage * EXPERIENCE_ELEMENTS_PER_PAGE +
+                    EXPERIENCE_ELEMENTS_PER_PAGE
+                )
+                .map((e) => {
+                  return (
+                    <li
+                      onClick={() => handleMenuElementClick(e)}
+                      className={`experience-list-item roboto ${
+                        menuSelectable ? "" : "closed"
+                      }`}
+                      key={e.id}
+                    >
+                      <p>{e.name}</p>
+                      <p style={{ textAlign: "end" }}>
+                        {formatDateRange(e.time)}
+                      </p>
+                      <img src={e.logoFilepath} height={"32px"} />
+                    </li>
+                  );
+                })}
+            </ul>
+          )}
+          {!menuVisible && currentSelection && (
+            <div>
+              <img
+                id="left-arrow"
+                onClick={handleBackArrowClick}
+                src="/TiVoAssets/leftArrow.png"
+                height={"50px"}
+              />
+              {currentSelection.name}
+            </div>
+          )}
         </div>
       </div>
     </div>

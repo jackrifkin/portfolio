@@ -131,7 +131,7 @@ function App() {
               }}
             >
               Development still in progress &mdash; More coming soon! <br />
-              (But feel free to browse anyway)
+              (Not quite ready for mobile)
             </h2>
             {/* ----- */}
             <div className="volume-controls" style={{ marginBottom: "24px" }}>
