@@ -13,7 +13,9 @@ const Navbar = () => {
 
   const handleClick = (item: CameraLocation) => {
     setOpen(false);
-    if (item !== currentLocation) {
+    // don't allow camera transition if user is trying to navigate to the location
+    // they are currently in (unless its "home")
+    if (item !== currentLocation || currentLocation === "home") {
       dispatchCameraEvent("focus-camera", item);
     }
   };

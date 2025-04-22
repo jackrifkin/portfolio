@@ -89,7 +89,10 @@ function App() {
         <Canvas
           style={{ visibility: clickedPlay ? "visible" : "hidden" }}
           className="canvas"
-          camera={{ position: [-10, 25, 5] }}
+          camera={{
+            position: [-10, 25, 5],
+            rotation: [-1.3473197, -0.4172199, -1.059652],
+          }}
         >
           <Suspense fallback={null}>
             <ambientLight intensity={0.6} color={[1, 1, 1.5]} />

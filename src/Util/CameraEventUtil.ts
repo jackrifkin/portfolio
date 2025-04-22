@@ -9,25 +9,25 @@ import {
 const LOCATION_DETAIL_MAP = {
   projects: {
     position: [2.568, 3.4, 3.354],
-    lookAt: [3, 3.4, 3.44],
+    rotation: [0, -1.77, 0],
     transitionDuration: DEFAULT_TRANSITION_DURATION,
     location: "projects",
   },
   experience: {
     position: [2.3, 3.4, -2.8],
-    lookAt: [2.9, 3.4, -4],
+    rotation: [0, -0.463648, 0],
     transitionDuration: DEFAULT_TRANSITION_DURATION,
     location: "experience",
   },
   links: {
-    position: [4.24, 4.086, 0.2576],
-    lookAt: [4.5, 4.07, 0.2576],
+    position: [4.24, 3.9, 0.2576],
+    rotation: [0, -1.6, 0],
     transitionDuration: DEFAULT_TRANSITION_DURATION,
     location: "links",
   },
   home: {
     position: [4.945, 4.3997, 10.3758],
-    lookAt: [0, 3, 0],
+    rotation: [-0.13409, 0.44125, 0.057549],
     transitionDuration: DEFAULT_TRANSITION_DURATION,
     location: "home",
   },

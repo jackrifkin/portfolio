@@ -23,7 +23,7 @@ export type CameraLocation = "home" | "projects" | "experience" | "links";
 
 interface CameraFocusEventDetails {
   position: Vector3 | [x: number, y: number, z: number];
-  lookAt: Vector3 | [x: number, y: number, z: number];
+  rotation: Vector3 | [x: number, y: number, z: number];
   transitionDuration: number;
   location: CameraLocation;
 }
@@ -31,3 +31,28 @@ interface CameraFocusEventDetails {
 export interface CameraEventMap {
   "focus-camera": CameraFocusEventDetails;
 }
+
+export type Month = {
+  month: number;
+  year: number;
+};
+
+export type DateRange = {
+  start: Month;
+  end?: Month;
+};
+
+export const formatDateRange = (dateRange: DateRange): string => {
+  const { start, end } = dateRange;
+
+  return `${start.month}/${start.year} - ${
+    end ? `${end.month}/${end.year}` : "Now"
+  }`;
+};
+
+export type Experience = {
+  id: number;
+  name: string;
+  time: DateRange;
+  logoFilepath: string;
+};

@@ -104,7 +104,6 @@ a {
   left: -16px;
   height: 500px;
   width: 550px;
-  background-color: aqua;
   pointer-events: auto;
 }
 
@@ -112,7 +111,6 @@ a {
   background-color: white;
   width: 590px;
   height: 540px;
-  border-radius: 24px;
   overflow: hidden;
   cursor: url("/WiiUIAssets/wiiCursor.png") 0 0, auto;
 }
@@ -200,6 +198,202 @@ a {
   transition: transform 0.2s ease;
   transform: scale(1.1);
   color: aqua;
+}
+
+.experience-overlay {
+  font-family: "TiVo";
+  background-image: url("/TiVoAssets/TiVoBackground.png");
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tivo-logo {
+  display: inline;
+}
+
+.tivo-header {
+  margin: 24px 0 0 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.tivo-title-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.tivo-title {
+  margin: 0;
+  text-shadow: 1px 1px 2px black;
+  color: #d29c5a;
+  font-size: 3.25em;
+}
+
+.tivo-body {
+  margin: 5% 0 10% 10%;
+  border: 2px solid white;
+  border-right: none;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+  height: 100%;
+  box-shadow: 2px 2px 4px black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#experience-float-1,
+#experience-float-2,
+#work-float {
+  width: 150px;
+  position: absolute;
+  user-select: none;
+  z-index: 1;
+  filter: blur(1px);
+}
+
+#experience-float-1,
+#experience-float-2 {
+  width: 400px;
+}
+
+@keyframes experienceFloat1Animation {
+  0% {
+    right: -40px;
+    opacity: 0%;
+  }
+  10% {
+    opacity: 50%;
+  }
+  40% {
+    opacity: 50%;
+  }
+  50% {
+    right: 15%;
+    opacity: 0%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
+#experience-float-1 {
+  top: 8%;
+  animation: experienceFloat1Animation 8s linear infinite;
+}
+
+@keyframes experienceFloat2Animation {
+  0% {
+    opacity: 0%;
+  }
+  20% {
+    opacity: 0%;
+    transform: scale(1);
+  }
+  30% {
+    opacity: 75%;
+  }
+  70% {
+    opacity: 0%;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
+#experience-float-2 {
+  top: 6%;
+  left: 10%;
+  animation: experienceFloat2Animation 8s linear infinite;
+}
+
+@keyframes workFloatAnimation {
+  0% {
+    left: 20%;
+    opacity: 0%;
+  }
+  50% {
+    left: 20%;
+    opacity: 0%;
+  }
+  60% {
+    opacity: 75%;
+  }
+  90% {
+    opacity: 75%;
+  }
+  100% {
+    left: 50%;
+    opacity: 0%;
+  }
+}
+
+#work-float {
+  top: 15%;
+  animation: workFloatAnimation 8s linear infinite;
+}
+
+.experience-list {
+  list-style: none;
+  margin-top: 24px;
+}
+
+.experience-list-item {
+  display: grid;
+  grid-template-columns: 50% 25% 15%;
+  gap: 5%;
+  margin: 8px 0;
+  margin-right: 10%;
+  padding: 4px 0;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.experience-list-item > p {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  margin: 0;
+  z-index: 10;
+}
+
+.experience-list-item::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -30%;
+  width: 112%;
+  height: 100%;
+  background: linear-gradient(to bottom, #425388, #587acc);
+  z-index: 0;
+  transform: translateX(-100%);
+  border: 2px solid #d29c5a;
+  border-radius: 30px;
+}
+
+.experience-list-item:hover::before {
+  transform: translateX(0);
+}
+
+#up-arrow,
+#down-arrow {
+  position: absolute;
+  transition: transform 0.2s ease;
+  left: 50%;
+}
+
+#down-arrow {
+  bottom: 56px;
+}
+
+#up-arrow:hover,
+#down-arrow:hover {
+  transform: scale(1.1);
 }
 
 @media screen and (max-width: 768px) {
