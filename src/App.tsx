@@ -130,8 +130,9 @@ function App() {
                 lineHeight: "1.5em",
               }}
             >
-              Development still in progress &mdash; More coming soon! <br />
-              (Not quite ready for mobile)
+              Development still in progress!
+              <br />
+              Please pardon the appearance
             </h2>
             {/* ----- */}
             <div className="volume-controls" style={{ marginBottom: "24px" }}>

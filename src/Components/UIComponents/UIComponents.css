@@ -243,6 +243,7 @@ a {
   height: 100%;
   box-shadow: 2px 2px 4px black;
   background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
 
   /* prevents absolute-ly positioned child elements
    from changing position during animation 
@@ -313,14 +314,14 @@ a {
   0% {
     opacity: 0%;
   }
-  20% {
+  30% {
     opacity: 0%;
     transform: scale(1);
   }
-  30% {
+  40% {
     opacity: 75%;
   }
-  70% {
+  80% {
     opacity: 0%;
     transform: scale(2);
   }
@@ -430,6 +431,98 @@ a {
 
 #left-arrow:hover {
   transform: scale(1.1);
+}
+
+.details-container {
+  padding: 2% 5% 0 10%;
+  overflow-y: scroll;
+  height: 100%;
+  max-height: 285px;
+}
+
+.details-container > p {
+  white-space: pre-line;
+  font-size: 1em;
+}
+
+.header-container > * > h1 {
+  font-size: 1.4em;
+}
+
+.header-container > * > h2 {
+  font-size: 1.1em;
+}
+
+.header-container > img {
+  margin-top: 2%;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: -35px;
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.dropdown-toggle,
+.dropdown-list {
+  border-radius: 16px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.dropdown-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid white;
+  border-right: none;
+  color: white;
+  padding: 5px 10px;
+  box-shadow: 2px 2px 4px black;
+  cursor: pointer;
+}
+
+.dropdown-toggle > img {
+  margin-left: 16px;
+}
+
+.dropdown-list {
+  list-style: none;
+  position: relative;
+  border: 2px solid white;
+  border-right: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 8px 0;
+  margin-top: 8px;
+}
+
+.dropdown-option {
+  cursor: pointer;
+  padding: 4px 32px 4px 16px;
+}
+
+.dropdown-option:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-option.selected {
+  cursor: default;
+  color: grey;
+}
+
+.dropdown-option.selected:hover {
+  background-color: transparent;
 }
 
 @media screen and (max-width: 768px) {

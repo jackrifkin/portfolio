@@ -42,17 +42,9 @@ export type DateRange = {
   end?: Month;
 };
 
-export const formatDateRange = (dateRange: DateRange): string => {
-  const { start, end } = dateRange;
-
-  return `${start.month}/${start.year} - ${
-    end ? `${end.month}/${end.year}` : "Now"
-  }`;
-};
-
 export type Experience = {
-  id: number;
   name: string;
   time: DateRange;
   logoFilepath: string;
+  description: string;
 };

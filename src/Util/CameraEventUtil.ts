@@ -52,7 +52,8 @@ export const dispatchCameraEvent = <T extends CameraEvents>(
 
 export const handleFlyerClick = (
   flyerName: FlyerNames,
-  externalLink?: string
+  externalLink?: string,
+  currentLocation?: CameraLocation
 ): void => {
   switch (flyerName) {
     case "experience_flyer":
@@ -66,7 +67,11 @@ export const handleFlyerClick = (
       break;
     case "github_flyer":
     case "linkedin_flyer":
-      window.open(externalLink, "_blank");
+      if (currentLocation === "links") {
+        window.open(externalLink, "_blank");
+      } else {
+        dispatchCameraEvent("focus-camera", "links");
+      }
       break;
   }
 };

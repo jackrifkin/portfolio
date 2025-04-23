@@ -12,6 +12,7 @@ import {
 import { useFrame, useThree } from "@react-three/fiber";
 import { MutedContext } from "../../Contexts/MutedContext";
 import { handleFlyerClick } from "../../Util/CameraEventUtil";
+import { LocationContext } from "../../Contexts/LocationContext";
 
 // Issues with gltf animations, using FBX for animated models
 const AnimatedEmissiveFBXModel = ({ model }: { model: ModelSource }) => {
@@ -113,6 +114,7 @@ const Model = ({ model }: { model: ModelSource }) => {
   const texture = useTexture(`/Textures/${model.texture}`);
   const meshRef = useRef<Mesh>(null!);
   const [hovered, setHovered] = useState<boolean>(false);
+  const currentLocation = useContext(LocationContext);
   const { gl } = useThree();
   texture.flipY = false;
 
@@ -144,7 +146,11 @@ const Model = ({ model }: { model: ModelSource }) => {
 
   const handleClick = () => {
     if (model.isHoverable) {
-      handleFlyerClick(model.name as FlyerNames, model.externalLink);
+      handleFlyerClick(
+        model.name as FlyerNames,
+        model.externalLink,
+        currentLocation
+      );
     }
   };
 
