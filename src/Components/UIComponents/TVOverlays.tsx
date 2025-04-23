@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { Experience } from "../../types";
 import { dispatchCameraEvent } from "../../Util/CameraEventUtil";
 import { experiences } from "./Content/experience";
@@ -8,6 +8,14 @@ import Dropdown from "./Dropdown";
 
 const EXPERIENCE_ELEMENTS_PER_PAGE = 5;
 const MAX_PAGES = Math.ceil(experiences.length / EXPERIENCE_ELEMENTS_PER_PAGE);
+
+const Fallback = ({ type }: { type: "experience" | "projects" }) => {
+  return (
+    <div className="fullscreen overlay-container">
+      <div className={`${type}-overlay ${type}-fallback`}></div>
+    </div>
+  );
+};
 
 const ExperienceMenuItem = ({
   experience,
@@ -95,100 +103,104 @@ export const ExperienceOverlay = () => {
   };
 
   return (
-    <div className="fullscreen overlay-container">
-      <div className="experience-overlay roboto">
-        <img id="experience-float-1" src="/TiVoAssets/Experience.png" />
-        <img id="experience-float-2" src="/TiVoAssets/Experience.png" />
-        <img id="work-float" src="/TiVoAssets/Work.png" />
-        <div className="tivo-header">
-          <img
-            className="tivo-logo"
-            src="/TiVoAssets/tivo_logo.svg"
-            width={"96px"}
-          />
-          <div className="tivo-title-container">
-            <h1 className="tivo-title roboto">Experience</h1>
+    <Suspense fallback={<Fallback type="experience" />}>
+      <div className="fullscreen overlay-container">
+        <div className="experience-overlay roboto">
+          <img id="experience-float-1" src="/TiVoAssets/Experience.png" />
+          <img id="experience-float-2" src="/TiVoAssets/Experience.png" />
+          <img id="work-float" src="/TiVoAssets/Work.png" />
+          <div className="tivo-header">
+            <img
+              className="tivo-logo"
+              src="/TiVoAssets/tivo_logo.svg"
+              width={"96px"}
+            />
+            <div className="tivo-title-container">
+              <h1 className="tivo-title roboto">Experience</h1>
+            </div>
+          </div>
+          <div className={`tivo-menu-body ${shouldAnimate ? "animate" : ""}`}>
+            {menuVisible && (
+              <>
+                <Dropdown
+                  options={SORT_OPTIONS}
+                  onSelect={(option: SortOption) => setSortBy(option)}
+                  renderT={(item: SortOption) => item}
+                />
+                {currentPage !== 0 && (
+                  <img
+                    onClick={() => setCurrentPage((p) => p - 1)}
+                    id="up-arrow"
+                    src="/TiVoAssets/upArrow.png"
+                    width="50px"
+                  />
+                )}
+                {currentPage !== MAX_PAGES - 1 && (
+                  <img
+                    onClick={() => setCurrentPage((p) => p + 1)}
+                    id="down-arrow"
+                    src="/TiVoAssets/downArrow.png"
+                    width="50px"
+                  />
+                )}
+                <ul className="experience-list">
+                  {sortedExperiences
+                    .slice(
+                      currentPage * EXPERIENCE_ELEMENTS_PER_PAGE,
+                      currentPage * EXPERIENCE_ELEMENTS_PER_PAGE +
+                        EXPERIENCE_ELEMENTS_PER_PAGE
+                    )
+                    .map((e, index) => (
+                      <ExperienceMenuItem
+                        experience={e}
+                        menuSelectable={menuSelectable}
+                        handleClick={handleMenuElementClick}
+                        index={index}
+                      />
+                    ))}
+                </ul>
+              </>
+            )}
+            {!menuVisible && currentSelection && (
+              <>
+                <img
+                  id="left-arrow"
+                  onClick={handleBackArrowClick}
+                  src="/TiVoAssets/leftArrow.png"
+                  height={"50px"}
+                />
+                <ExperienceDetails experience={currentSelection} />
+              </>
+            )}
           </div>
         </div>
-        <div className={`tivo-menu-body ${shouldAnimate ? "animate" : ""}`}>
-          {menuVisible && (
-            <>
-              <Dropdown
-                options={SORT_OPTIONS}
-                onSelect={(option: SortOption) => setSortBy(option)}
-                renderT={(item: SortOption) => item}
-              />
-              {currentPage !== 0 && (
-                <img
-                  onClick={() => setCurrentPage((p) => p - 1)}
-                  id="up-arrow"
-                  src="/TiVoAssets/upArrow.png"
-                  width="50px"
-                />
-              )}
-              {currentPage !== MAX_PAGES - 1 && (
-                <img
-                  onClick={() => setCurrentPage((p) => p + 1)}
-                  id="down-arrow"
-                  src="/TiVoAssets/downArrow.png"
-                  width="50px"
-                />
-              )}
-              <ul className="experience-list">
-                {sortedExperiences
-                  .slice(
-                    currentPage * EXPERIENCE_ELEMENTS_PER_PAGE,
-                    currentPage * EXPERIENCE_ELEMENTS_PER_PAGE +
-                      EXPERIENCE_ELEMENTS_PER_PAGE
-                  )
-                  .map((e, index) => (
-                    <ExperienceMenuItem
-                      experience={e}
-                      menuSelectable={menuSelectable}
-                      handleClick={handleMenuElementClick}
-                      index={index}
-                    />
-                  ))}
-              </ul>
-            </>
-          )}
-          {!menuVisible && currentSelection && (
-            <>
-              <img
-                id="left-arrow"
-                onClick={handleBackArrowClick}
-                src="/TiVoAssets/leftArrow.png"
-                height={"50px"}
-              />
-              <ExperienceDetails experience={currentSelection} />
-            </>
-          )}
-        </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 
 export const ProjectsOverlay = () => {
   return (
-    <div className="fullscreen overlay-container">
-      <div className="projects-overlay">
-        <img src="/WiiUIAssets/wiiMenuTopBar.svg" width={"100%"} />
-        <button
-          onClick={() => dispatchCameraEvent("focus-camera", "home")}
-          className="exit-button montserrat"
-        >
-          EXIT
-        </button>
-        <div className="arrow-buttons">
-          <img src="/WiiUIAssets/wiiArrowLeft.svg" width={"24px"} />
-          <img src="/WiiUIAssets/wiiArrowRight.svg" width={"24px"} />
-        </div>
-        <div className="wii-button-container">
-          <div className="wii-button montserrat">Demo</div>
-          <div className="wii-button montserrat">GitHub</div>
+    <Suspense fallback={<Fallback type="projects" />}>
+      <div className="fullscreen overlay-container">
+        <div className="projects-overlay">
+          <img src="/WiiUIAssets/wiiMenuTopBar.svg" width={"100%"} />
+          <button
+            onClick={() => dispatchCameraEvent("focus-camera", "home")}
+            className="exit-button montserrat"
+          >
+            EXIT
+          </button>
+          <div className="arrow-buttons">
+            <img src="/WiiUIAssets/wiiArrowLeft.svg" width={"24px"} />
+            <img src="/WiiUIAssets/wiiArrowRight.svg" width={"24px"} />
+          </div>
+          <div className="wii-button-container">
+            <div className="wii-button montserrat">Demo</div>
+            <div className="wii-button montserrat">GitHub</div>
+          </div>
         </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
