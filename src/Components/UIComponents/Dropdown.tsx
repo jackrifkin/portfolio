@@ -24,7 +24,7 @@ const Dropdown = <T,>({ options, onSelect, renderT }: DropdownProps<T>) => {
     <div className="dropdown">
       <button className="dropdown-toggle roboto" onClick={handleToggle}>
         Sort by
-        <img src="/TiVoAssets/sortIcon.svg" height={"16px"} />
+        <img alt="sort-icon" src="/TiVoAssets/sortIcon.svg" height={"16px"} />
       </button>
       {isOpen && (
         <ul className="dropdown-list">

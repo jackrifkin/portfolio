@@ -6,7 +6,7 @@ const Info = () => {
   const [opened, setOpened] = useState<boolean>(false);
   return (
     <div className="info-container">
-      <div className={`content-container ${opened ? "open" : ""}`}>
+      <div className={`info-content ${opened ? "open" : ""}`}>
         <InfoIcon
           opened={opened}
           toggleOpened={() => setOpened((o) => !o)}

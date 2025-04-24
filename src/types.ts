@@ -32,7 +32,7 @@ export interface CameraEventMap {
   "focus-camera": CameraFocusEventDetails;
 }
 
-export type Month = {
+type Month = {
   month: number;
   year: number;
 };
@@ -47,4 +47,21 @@ export type Experience = {
   time: DateRange;
   logoFilepath: string;
   description: string;
+};
+
+type ProjectButton = {
+  label: string;
+  link: string;
+};
+
+export type Project = {
+  name: string;
+  time: DateRange;
+  description: string;
+  backgroundImage?: string;
+  backgroundColor?: string;
+  textColor: string;
+  backgroundLogos?: string[];
+  button1?: ProjectButton;
+  button2?: ProjectButton;
 };
