@@ -101,16 +101,17 @@ a {
 .experience-overlay,
 .projects-overlay {
   position: relative;
-  left: -16px;
-  height: 500px;
-  width: 550px;
+  left: -2vh;
+  aspect-ratio: 11 / 10;
+  height: 63vh;
   pointer-events: auto;
 }
 
 .projects-overlay {
   background-color: white;
-  width: 590px;
-  height: 540px;
+  aspect-ratio: 59/54;
+  height: 68vh;
+  left: -2.25vh;
   overflow: hidden;
   cursor: url("/WiiUIAssets/wiiCursor.png") 0 0, auto;
 }
@@ -119,15 +120,15 @@ a {
   position: absolute;
   top: 0;
   right: 0;
-  margin: 12px 24px;
-  border: 4px solid white;
+  margin: 1.5vh 3vh;
+  border: 0.5vh solid white;
   border-radius: 20px;
   background: none;
   color: white;
   font-weight: bold;
-  font-size: larger;
+  font-size: 2.5vh;
   letter-spacing: 0.1em;
-  padding: 0 16px;
+  padding: 0 1.75vh;
 }
 
 .exit-button:hover {
@@ -152,14 +153,14 @@ a {
   background-image: url("/WiiUIAssets/wiiButton.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 64px;
-  width: 224px;
+  height: 8vh;
+  width: 28.1vh;
   color: black;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  font-size: 1.75em;
+  font-size: 4vh;
   user-select: none;
   transition: transform 0.2s ease;
   cursor: inherit;
@@ -206,6 +207,7 @@ a {
 .experience-overlay {
   font-family: "TiVo";
   background-image: url("/TiVoAssets/TiVoBackground.png");
+  background-size: contain;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -218,10 +220,11 @@ a {
 
 .tivo-logo {
   display: inline;
+  height: 10vh;
 }
 
 .tivo-header {
-  margin: 24px 0 0 10%;
+  margin: 2.5vh 0 0 10%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -238,16 +241,16 @@ a {
   margin: 0;
   text-shadow: 1px 1px 2px black;
   color: #d29c5a;
-  font-size: 3.25em;
+  font-size: 7vh;
 }
 
 .tivo-menu-body {
   margin: 5% 0 10% 10%;
-  border: 2px solid white;
+  border: 0.3vh solid white;
   border-right: none;
   border-top-left-radius: 24px;
   border-bottom-left-radius: 24px;
-  height: 100%;
+  height: 50vh;
   box-shadow: 2px 2px 4px black;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 100;
@@ -280,7 +283,7 @@ a {
 #experience-float-1,
 #experience-float-2,
 #work-float {
-  width: 150px;
+  width: 15vh;
   position: absolute;
   user-select: none;
   z-index: 1;
@@ -289,12 +292,12 @@ a {
 
 #experience-float-1,
 #experience-float-2 {
-  width: 400px;
+  width: 45vh;
 }
 
 @keyframes experienceFloat1Animation {
   0% {
-    right: -40px;
+    right: -5%;
     opacity: 0%;
   }
   10% {
@@ -370,16 +373,19 @@ a {
 
 .experience-list {
   list-style: none;
-  margin-top: 24px;
+  margin-top: 2.5vh;
+  padding-left: 5vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .experience-list-item {
   display: grid;
   grid-template-columns: 50% 25% 15%;
   gap: 5%;
-  margin: 8px 0;
+  margin: 0.75vh 0;
   margin-right: 10%;
-  padding: 4px 0;
+  padding: 0.3vh 0;
   align-items: center;
   cursor: pointer;
   position: relative;
@@ -391,12 +397,17 @@ a {
   text-wrap: nowrap;
   margin: 0;
   z-index: 10;
+  font-size: 2.1vh;
+}
+
+.experience-list-item > img {
+  height: 4vh;
 }
 
 .experience-list-item::before {
   content: "";
   position: absolute;
-  top: -4px;
+  top: -0.25vh;
   left: -30%;
   width: 112%;
   height: 100%;
@@ -434,6 +445,7 @@ a {
 #left-arrow {
   position: absolute;
   top: 42%;
+  height: 7vh;
 }
 
 #left-arrow:hover {
@@ -444,24 +456,25 @@ a {
   padding: 2% 5% 0 10%;
   overflow-y: scroll;
   height: 100%;
-  max-height: 285px;
+  max-height: 38vh;
 }
 
 .details-container > p {
   white-space: pre-line;
-  font-size: 1em;
+  font-size: 2.05vh;
 }
 
 .header-container > * > h1 {
-  font-size: 1.4em;
+  font-size: 2.9vh;
 }
 
 .header-container > * > h2 {
-  font-size: 1.1em;
+  font-size: 2.25vh;
 }
 
 .header-container > img {
   margin-top: 2%;
+  height: 10vh;
 }
 
 .header-container {
@@ -473,7 +486,7 @@ a {
 .dropdown {
   position: absolute;
   right: 0;
-  top: -35px;
+  top: -4.5vh;
   z-index: 200;
   display: flex;
   align-items: flex-end;
@@ -482,7 +495,7 @@ a {
 
 .dropdown-toggle,
 .dropdown-list {
-  border-radius: 16px;
+  border-radius: 2vh;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -492,31 +505,34 @@ a {
   justify-content: space-between;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.3);
-  border: 2px solid white;
+  border: 0.3vh solid white;
   border-right: none;
   color: white;
-  padding: 5px 10px;
+  padding: 0.65vh 1.3vh;
   box-shadow: 2px 2px 4px black;
   cursor: pointer;
+  font-size: 1.75vh;
 }
 
 .dropdown-toggle > img {
-  margin-left: 16px;
+  margin-left: 2vh;
+  height: 2vh;
 }
 
 .dropdown-list {
   list-style: none;
   position: relative;
-  border: 2px solid white;
+  border: 0.3vh solid white;
   border-right: none;
   background-color: rgba(0, 0, 0, 0.3);
-  padding: 8px 0;
-  margin-top: 8px;
+  padding: 1vh 0;
+  margin-top: 1vh;
 }
 
 .dropdown-option {
   cursor: pointer;
-  padding: 4px 32px 4px 16px;
+  padding: 0.5vh 4vh 0.5vh 2vh;
+  font-size: 2.1vh;
 }
 
 .dropdown-option:hover {

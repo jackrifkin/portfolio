@@ -39,11 +39,7 @@ const ExperienceMenuItem = ({
     >
       <p>{experience.name}</p>
       <p style={{ textAlign: "end" }}>{formatDateRange(experience.time)}</p>
-      <img
-        alt={experience.logoFilepath}
-        src={experience.logoFilepath}
-        height={"32px"}
-      />
+      <img alt={experience.logoFilepath} src={experience.logoFilepath} />
     </li>
   );
 };
@@ -56,11 +52,7 @@ const ExperienceDetails = ({ experience }: { experience: Experience }) => {
           <h1>{experience.name}</h1>
           <h2>{formatDateRange(experience.time, true)}</h2>
         </div>
-        <img
-          alt={experience.logoFilepath}
-          src={experience.logoFilepath}
-          height={"80px"}
-        />
+        <img alt={experience.logoFilepath} src={experience.logoFilepath} />
       </div>
       <p>{experience.description}</p>
     </div>
@@ -165,7 +157,6 @@ export const ExperienceOverlay = () => {
               alt="tivo-logo"
               className="tivo-logo"
               src="/TiVoAssets/tivo_logo.svg"
-              width={"96px"}
             />
             <div className="tivo-title-container">
               <h1 className="tivo-title roboto">Experience</h1>
@@ -222,7 +213,6 @@ export const ExperienceOverlay = () => {
                   id="left-arrow"
                   onClick={handleBackArrowClick}
                   src="/TiVoAssets/leftArrow.png"
-                  height={"50px"}
                 />
                 <ExperienceDetails experience={currentSelection} />
               </>
