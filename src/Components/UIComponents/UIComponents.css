@@ -572,11 +572,11 @@ a {
 
 @keyframes floatingLogosAnim {
   0% {
-    transform: translate(-80px, 0);
+    transform: translate(0, -40%);
   }
 
   100% {
-    transform: translate(-250px, 0);
+    transform: translate(0, 0%);
   }
 }
 
@@ -590,7 +590,7 @@ a {
 }
 
 .logo-row {
-  width: 100%;
+  /* max-width: 150%; */
   display: flex;
   justify-content: space-evenly;
 }

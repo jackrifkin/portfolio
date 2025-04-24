@@ -234,8 +234,8 @@ export const ExperienceOverlay = () => {
   );
 };
 
-const NUM_ROWS = 5;
-const LOGOS_PER_ROW = 10;
+const NUM_ROWS = 7;
+const LOGOS_PER_ROW = 8;
 
 const FloatingLogos = ({ logos }: { logos: string[] }) => {
   return (
@@ -245,17 +245,21 @@ const FloatingLogos = ({ logos }: { logos: string[] }) => {
           key={rowIndex}
           className="logo-row"
           style={{
-            marginLeft: rowIndex % 2 === 1 ? `88.5px` : 0,
-            height: `${100 / NUM_ROWS}%`,
-            width: `150%`,
+            height: `${100 / (NUM_ROWS - 2)}%`,
+            width: `100%`,
           }}
         >
           {Array.from({ length: LOGOS_PER_ROW }).map((_, colIndex) => {
             return (
               <img
                 key={rowIndex * LOGOS_PER_ROW + colIndex}
-                src={logos[colIndex % logos.length]}
-                width={`${LOGOS_PER_ROW / 2}%`}
+                src={
+                  logos[
+                    rowIndex % 2 === 1
+                      ? (colIndex + 1) % logos.length
+                      : colIndex % logos.length
+                  ]
+                }
                 height={45}
               />
             );

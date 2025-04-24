@@ -18,7 +18,7 @@ export const projects: Project[] = [
     name: "Short Stack",
     time: { start: { month: 10, year: 24 }, end: { month: 12, year: 24 } },
     description:
-      "A full-stack community forum platform with user authentication, Q&A functionality, configurable notifications, community-written articles, and a challenges/rewards system",
+      "A pancake-themed full-stack community forum platform with user authentication, Q&A functionality, configurable notifications, community-written articles, and a challenges/rewards system",
     button1: { label: "Demo", link: "https://cs4530-f24-808.onrender.com/" },
     button2: {
       label: "GitHub",
@@ -58,6 +58,46 @@ export const projects: Project[] = [
     backgroundLogos: [
       "/PortfolioContent/python_logo.png",
       "/PortfolioContent/scrabble-logo.png",
+    ],
+  },
+  {
+    name: "Mixr",
+    time: { start: { month: 10, year: 23 }, end: { month: 12, year: 23 } },
+    description:
+      "A full-stack cocktail recipe-sharing platform with functionality for user authentication, reviewing, liking, searching, and creating cocktail recipes",
+    button1: {
+      label: "Demo",
+      link: "https://serene-mousse-081bb3.netlify.app/",
+    },
+    button2: {
+      label: "GitHub",
+      link: "https://github.com/BalinVanessa/mixr-react-web-app",
+    },
+    backgroundColor: "#13232C",
+    textColor: "white",
+    backgroundLogos: [
+      "/PortfolioContent/mixrLogo.svg",
+      "/PortfolioContent/reactLogo.png",
+      "/PortfolioContent/reduxLogo.png",
+      "/PortfolioContent/nodeLogo.png",
+      "/PortfolioContent/mongoLogo.png",
+    ],
+  },
+  {
+    name: "Asset Album",
+    time: { start: { month: 5, year: 23 }, end: { month: 6, year: 23 } },
+    description:
+      "A Java Spring REST API for storing and filtering PNG files/assets for 2D animation in a MySQL relational database.",
+    button1: {
+      label: "GitHub",
+      link: "https://github.com/jackrifkin/AssetAlbum",
+    },
+    backgroundColor: "white",
+    textColor: "#85034c",
+    backgroundLogos: [
+      "/PortfolioContent/javaLogo.png",
+      "/PortfolioContent/javaSpringLogo.png",
+      "/PortfolioContent/mySQLLogo.png",
     ],
   },
 ];
