@@ -6,8 +6,7 @@ export const projects: Project[] = [
     time: { start: { month: 1, year: 25 }, end: { month: 4, year: 25 } },
     description:
       "A 3D React Three Fiber interactive experience showcasing my projects and experience",
-    button1: { label: "Demo", link: "" },
-    button2: {
+    button1: {
       label: "GitHub",
       link: "https://github.com/jackrifkin/portfolio",
     },

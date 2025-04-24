@@ -5,7 +5,13 @@ import { dispatchCameraEvent } from "../../Util/CameraEventUtil";
 import { CameraLocation } from "../../types";
 import { LocationContext } from "../../Contexts/LocationContext";
 
-const NAV_ITEMS: CameraLocation[] = ["home", "projects", "experience", "links"];
+const NAV_ITEMS: CameraLocation[] = [
+  "home",
+  "projects",
+  "experience",
+  "links",
+  "cat",
+];
 
 const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);

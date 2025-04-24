@@ -31,6 +31,12 @@ const LOCATION_DETAIL_MAP = {
     transitionDuration: DEFAULT_TRANSITION_DURATION,
     location: "home",
   },
+  cat: {
+    position: [-2.30813, 7.13299, -0.74698],
+    rotation: [0.00607, 0.23291, -0.001402],
+    transitionDuration: DEFAULT_TRANSITION_DURATION,
+    location: "cat",
+  },
 };
 
 export const dispatchCameraEvent = <T extends CameraEvents>(
