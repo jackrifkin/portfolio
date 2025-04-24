@@ -106,7 +106,7 @@ function App() {
                 intensity={2}
                 kernelSize={KernelSize.VERY_LARGE}
                 luminanceSmoothing={0.5}
-                mipmapBlur
+                mipmapBlur={false}
               />
             </EffectComposer>
           </Suspense>
@@ -119,22 +119,6 @@ function App() {
             style={clickedPlay ? { opacity: "0%" } : undefined}
           >
             <h1 className="title special-gothic">Jack Rifkin</h1>
-            {/* ---- TODO: Remove ---- */}
-            <h2
-              className="montserrat"
-              style={{
-                marginTop: 0,
-                marginBottom: "50px",
-                color: "var(--pink)",
-                textAlign: "center",
-                lineHeight: "1.5em",
-              }}
-            >
-              Development still in progress!
-              <br />
-              Please pardon the appearance
-            </h2>
-            {/* ----- */}
             <div className="volume-controls" style={{ marginBottom: "24px" }}>
               <MuteButton
                 isMuted={isMuted}
@@ -147,6 +131,25 @@ function App() {
               {isMobile && <PlayButton />}
             </div>
             {!isMobile && <PlayButton />}
+
+            {/* ---- TODO: Make mobile work ---- */}
+            {isMobile && (
+              <h2
+                className="montserrat"
+                style={{
+                  marginTop: 50,
+                  marginBottom: 0,
+                  color: "var(--pink)",
+                  textAlign: "center",
+                  lineHeight: "1.5em",
+                }}
+              >
+                **Not yet 100% mobile responsive
+                <br />
+                (sorry)
+              </h2>
+            )}
+            {/* ----- */}
           </div>
         )}
 
