@@ -99,4 +99,41 @@ export const projects: Project[] = [
       "/PortfolioContent/mySQLLogo.png",
     ],
   },
+  {
+    name: "Apocalypse Environment",
+    time: { start: { month: 2, year: 25 }, end: { month: 4, year: 25 } },
+    description:
+      "An apocalyptic desert compound built for Unity using Autodesk Maya and Adobe Substance Painter",
+    backgroundImage: "/PortfolioContent/apocalypse_screenshot.png",
+    backgroundColor: "#151515",
+    textColor: "white",
+    button1: {
+      label: "Video",
+      link: "https://vimeo.com/1078551288",
+    },
+  },
+  {
+    name: "Chasing Cheddar",
+    time: { start: { month: 9, year: 24 }, end: { month: 12, year: 24 } },
+    description: "A corporate rat's morning routine",
+    backgroundImage: "/PortfolioContent/chasing_cheddar.png",
+    backgroundColor: "#151515",
+    textColor: "white",
+    button1: {
+      label: "Watch",
+      link: "https://vimeo.com/1038757181",
+    },
+  },
+  {
+    name: "frog.mp4",
+    time: { start: { month: 4, year: 22 }, end: { month: 7, year: 22 } },
+    description: "My magnum opus\n\nR.I.P. White Hall",
+    backgroundImage: "/PortfolioContent/frog.png",
+    backgroundColor: "#151515",
+    textColor: "white",
+    button1: {
+      label: "Watch",
+      link: "https://vimeo.com/726340859",
+    },
+  },
 ];

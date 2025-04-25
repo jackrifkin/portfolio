@@ -558,6 +558,7 @@ a {
   top: 0;
   left: 0;
   height: 75%;
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -567,6 +568,7 @@ a {
   background-size: cover;
   background-position: center;
   padding: 4% 12% 0 12%;
+  box-sizing: border-box;
 }
 
 .project-content-container > p {
