@@ -94,6 +94,10 @@ a {
   color: var(--pink);
 }
 
+.nav-item:active {
+  transform: scale(0.9);
+}
+
 .overlay-container {
   pointer-events: none;
 }

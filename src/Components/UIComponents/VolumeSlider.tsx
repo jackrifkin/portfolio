@@ -1,4 +1,5 @@
 import { MAX_VOLUME } from "../../Hooks/useBackgroundMusic";
+import "./VolumeSlider.css";
 
 const VolumeSlider = ({
   volume,
@@ -15,6 +16,7 @@ const VolumeSlider = ({
       step={MAX_VOLUME / 20}
       value={volume}
       onChange={(e) => onChange(+e.target.value)}
+      className="volume-slider"
     />
   );
 };
